@@ -8,3 +8,10 @@ Conventions:
 - Fonctions et méthodes : Camel case => obj.myMethod()
 - Tout en anglais et javadoc pour la doc
 - Pas de commentaires //, utiliser les /* */ même sur une ligne pour éviter les problèmes
+- Les accolades seront sous forme 
+```java
+int quelquechose(){
+  ...
+}
+```
+- Un tab = 4 espaces
