@@ -1,3 +1,5 @@
+package packageModel;
+
 public class Coord {
     int x;
     int y;
@@ -20,5 +22,10 @@ public class Coord {
 
     public void setY(int y) {
         this.y = y;
+    }
+
+    public String toString() {
+        char row = (char) (64+x);
+        return "" + row + x;
     }
 }

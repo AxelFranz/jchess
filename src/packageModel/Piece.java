@@ -1,3 +1,7 @@
+package packageModel;
+
+import packageModel.Coord;
+
 public abstract class Piece {
     private Coord coords;
     private String ImgPath; /* idk if we keep it or put Image class instead */
