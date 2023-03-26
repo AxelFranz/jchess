@@ -24,6 +24,7 @@ public class Coord {
         this.y = y;
     }
 
+    /* return a String corresponding to the coordinates used in chess */
     public String toString() {
         char row = (char) (64+x);
         return "" + row + x;
