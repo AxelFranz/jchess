@@ -14,16 +14,19 @@ public abstract class Piece {
     public abstract List<Coord> genAllMoves(); /* Returns all possible move */
     public abstract Boolean checkCapture(Coord x);
     public abstract List<Coord> genValidCapture();
+    public Boolean isEmpty() {
+        return false;
+    }
     public String toString(){
         return ""; /*  should be overwritten in each children */
     }
 
-    public Coord getCoords() {
-        return coords;
+    public Boolean getColor() {
+        return color;
     }
 
-    public void setCoords(Coord coords) {
-        this.coords = coords;
+    public void setColor(Boolean color) {
+        this.color = color;
     }
 
     public String getImgPiece() {

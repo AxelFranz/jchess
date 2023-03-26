@@ -18,6 +18,12 @@ public class Empty extends Piece {
     public List<Coord> genValidCapture() {
         return null;
     }
+
+    @Override
+    public Boolean isEmpty() {
+        return true;
+    }
+
     public String toString() {
         return null;/* should be defined */
     }
