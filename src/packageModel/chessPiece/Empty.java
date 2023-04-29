@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Empty extends Piece {
 
-    public Boolean checkMove(Coord x) {
+    public Boolean checkMove(Coord x, Piece[][] board) {
         return null;
     }
 
@@ -15,20 +15,18 @@ public class Empty extends Piece {
         return null;
     }
 
-    public Boolean checkCapture(Coord x) {
+    public Boolean checkCapture(Coord x, Piece[][] board) {
         return null;
     }
 
     public List<Coord> genValidCapture() {
         return null;
     }
-
-
     public Boolean isEmpty() {
         return true;
     }
 
     public String toString() {
-        return null;/* should be defined */
+        return pos + " vide ";
     }
 }

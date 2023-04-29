@@ -16,10 +16,17 @@ public class Board {
     public Piece getPiece(Coord pos) {
         return board[pos.getX()][pos.getY()];
     }
+    public void setPiece(Coord pos, Piece pc)
+    {
 
-    public void movePiece(Coord pc1,Coord pc2) {
-        /* should be implemented */
     }
+
+    public void movePiece(Move newMove) {
+        newMove.getPc().setPos(newMove.getDest());
+        newMove
+    }
+
+
 
     public void boardSet(int gamemode) {
         /* should be implemented */

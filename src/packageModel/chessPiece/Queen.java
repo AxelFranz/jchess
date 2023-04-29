@@ -6,7 +6,7 @@ import packageModel.Piece;
 import java.util.List;
 
 public class Queen extends Piece {
-    public Boolean checkMove(Coord x) {
+    public Boolean checkMove(Coord x, Piece[][] board) {
         return null;
     }
 
@@ -14,7 +14,7 @@ public class Queen extends Piece {
         return null;
     }
 
-    public Boolean checkCapture(Coord x) {
+    public Boolean checkCapture(Coord x, Piece[][] board) {
         return null;
     }
 

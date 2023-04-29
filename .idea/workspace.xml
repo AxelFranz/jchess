@@ -5,10 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ee3490b5-a15d-4b26-a220-7b874758dc6c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/packageModel/PieceFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/packageModel/MoveFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/packageModel/moveImplementations/CaptureMovement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/packageModel/moveImplementations/basicMovement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/packageModel/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/packageModel/Board.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/packageModel/Coord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/packageModel/Coord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/packageModel/Move.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/packageModel/Move.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/packageModel/Piece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/packageModel/Piece.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/packageModel/chessPiece/Bishop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/packageModel/chessPiece/Bishop.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/packageModel/chessPiece/Empty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/packageModel/chessPiece/Empty.java" afterDir="false" />
@@ -17,6 +20,7 @@
       <change beforePath="$PROJECT_DIR$/src/packageModel/chessPiece/Pawn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/packageModel/chessPiece/Pawn.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/packageModel/chessPiece/Queen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/packageModel/chessPiece/Queen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/packageModel/chessPiece/Rook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/packageModel/chessPiece/Rook.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/packageTest/CoordTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/packageTest/CoordTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

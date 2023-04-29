@@ -1,24 +1,25 @@
 package packageModel.chessPiece;
 
+import packageModel.Board;
 import packageModel.Coord;
 import packageModel.Piece;
 
 import java.util.List;
 
 public class King extends Piece {
-    public Boolean checkMove(Coord x) {
+
+    public Boolean checkMove(Coord x, Piece[][] board) {
         return null;
     }
 
-    public List<Coord> genAllMoves() {
+
+    @Override
+    public List<Coord> genMoves(Board board) {
         return null;
     }
 
-    public Boolean checkCapture(Coord x) {
-        return null;
-    }
-
-    public List<Coord> genValidCapture() {
+    @Override
+    public List<Coord> genValidCapture(Board board) {
         return null;
     }
 

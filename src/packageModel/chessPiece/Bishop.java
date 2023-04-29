@@ -1,5 +1,6 @@
 package packageModel.chessPiece;
 
+import packageModel.Board;
 import packageModel.Coord;
 import packageModel.Piece;
 
@@ -7,24 +8,20 @@ import java.util.List;
 
 public class Bishop extends Piece {
 
-    public Boolean checkMove(Coord x) {
-        return null;
+
+    public List<Coord> genMoves(Board plate) {
+
     }
 
-    public List<Coord> genAllMoves() {
-        return null;
-    }
-
-    public Boolean checkCapture(Coord x) {
-        return null;
-    }
 
     public List<Coord> genValidCapture() {
         return null;
     }
 
 
-    public Boolean isEmpty() {return false;}
+    public Boolean isEmpty() {
+        return false;
+    }
 
     public String toString() {
         return null;/* should be defined */
