@@ -26,6 +26,7 @@ public class CaptureMovement implements Move
         board.setPiece(dest,captured);
         moving.setPos(start);
         captured.setPos(dest);
+        moving.decrementMoved();
     }
 
     @Override
@@ -34,6 +35,7 @@ public class CaptureMovement implements Move
         board.setPiece(start,new Empty());
         moving.setPos(dest);
         captured.setPos(null);
+        moving.incrementMoved();
     }
 
     public String toString(){

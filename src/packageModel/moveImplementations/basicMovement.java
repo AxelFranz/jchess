@@ -21,12 +21,14 @@ public class basicMovement implements Move {
         board.setPiece(start, moving);
         board.setPiece(dest,new Empty());
         moving.setPos(start);
+        moving.decrementMoved();
     }
 
     @Override
     public void makeMove(Board board) {
         board.setPiece(dest, moving);
         board.setPiece(start, new Empty() /* wil soon replace empty with piece factory*/);
+        moving.incrementMoved();
     }
 
     @Override

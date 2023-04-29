@@ -1,32 +1,12 @@
 package packageModel.chessPiece;
 
 import packageModel.Coord;
+import packageModel.Move;
+import packageModel.MoveStack;
 import packageModel.Piece;
 
-import java.util.List;
+import java.util.ArrayList;
 
-public class Knight extends Piece {
-    public Boolean checkMove(Coord x, Piece[][] board) {
-        return null;
-    }
+public class Knight {
 
-    public List<Coord> genAllMoves() {
-        return null;
-    }
-
-    public Boolean checkCapture(Coord x, Piece[][] board) {
-        return null;
-    }
-
-    public List<Coord> genValidCapture() {
-        return null;
-    }
-
-    public Boolean isEmpty() {
-        return false;
-    }
-
-    public String toString() {
-        return null;/* should be defined */
-    }
 }

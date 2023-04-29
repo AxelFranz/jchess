@@ -1,29 +1,13 @@
 package packageModel.chessPiece;
 
-import packageModel.Board;
 import packageModel.Coord;
+import packageModel.Move;
+import packageModel.MoveStack;
 import packageModel.Piece;
 
-import java.util.List;
+import java.util.ArrayList;
 
-public class Bishop extends Piece {
-
-
-    public List<Coord> genMoves(Board plate) {
-
-    }
+public class Bishop  {
 
 
-    public List<Coord> genValidCapture() {
-        return null;
-    }
-
-
-    public Boolean isEmpty() {
-        return false;
-    }
-
-    public String toString() {
-        return null;/* should be defined */
-    }
 }

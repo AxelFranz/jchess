@@ -14,7 +14,10 @@ public class Board {
         this(new Piece[8][8], new MoveStack());
     }
     public Piece getPiece(Coord pos) {
-        return board[pos.getX()][pos.getY()];
+        return board[pos.x][pos.y];
+    }
+    public Piece getPiece(int x,int y){
+        return board[x][y];
     }
     public void setPiece(Coord pos, Piece pc)
     {
@@ -22,11 +25,9 @@ public class Board {
     }
 
     public void movePiece(Move newMove) {
-        newMove.getPc().setPos(newMove.getDest());
-        newMove
+
+
     }
-
-
 
     public void boardSet(int gamemode) {
         /* should be implemented */

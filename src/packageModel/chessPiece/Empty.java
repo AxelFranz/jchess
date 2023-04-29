@@ -1,32 +1,58 @@
 package packageModel.chessPiece;
 
-import packageModel.Coord;
-import packageModel.Piece;
+import packageModel.*;
 
-import java.util.List;
+import java.util.ArrayList;
 
-public class Empty extends Piece {
+public class Empty implements Piece {
 
-    public Boolean checkMove(Coord x, Piece[][] board) {
-        return null;
+
+    @Override
+    public boolean isWhite() {
+        return false;
     }
 
-    public List<Coord> genAllMoves() {
-        return null;
+    @Override
+    public boolean isBlack() {
+        return false;
     }
 
-    public Boolean checkCapture(Coord x, Piece[][] board) {
-        return null;
+    @Override
+    public boolean neverMoved() {
+        return false;
     }
 
-    public List<Coord> genValidCapture() {
-        return null;
+    @Override
+    public void setValidMoves(Board board) {
+
     }
-    public Boolean isEmpty() {
+
+    @Override
+    public boolean isEmpty() {
         return true;
     }
 
-    public String toString() {
-        return pos + " vide ";
+    @Override
+    public ArrayList<Move> getValidMoves() {
+        return null;
+    }
+
+    @Override
+    public Coord getPos() {
+        return null;
+    }
+
+    @Override
+    public void setPos(Coord pos) {
+    }
+
+    @Override
+    public void incrementMoved() {
+
+    }
+
+    @Override
+    public void decrementMoved() {
+
     }
 }
