@@ -6,20 +6,24 @@ import packageModel.Piece;
 import java.util.List;
 
 public class Empty extends Piece {
+
     public Boolean checkMove(Coord x) {
         return null;
     }
+
     public List<Coord> genAllMoves() {
         return null;
     }
+
     public Boolean checkCapture(Coord x) {
         return null;
     }
+
     public List<Coord> genValidCapture() {
         return null;
     }
 
-    @Override
+
     public Boolean isEmpty() {
         return true;
     }

@@ -27,6 +27,6 @@ public class Coord {
     /* return a String corresponding to the coordinates used in chess */
     public String toString() {
         char row = (char) (64+x);
-        return "" + row + x;
+        return "" + row + y;
     }
 }

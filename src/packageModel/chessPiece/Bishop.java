@@ -22,6 +22,10 @@ public class Bishop extends Piece {
     public List<Coord> genValidCapture() {
         return null;
     }
+
+
+    public Boolean isEmpty() {return false;}
+
     public String toString() {
         return null;/* should be defined */
     }

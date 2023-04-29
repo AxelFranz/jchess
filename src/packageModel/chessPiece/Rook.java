@@ -22,6 +22,10 @@ public class Rook extends Piece {
         return null;
     }
 
+    public Boolean isEmpty() {
+        return false;
+    }
+
     public String toString() {
         return null;/* should be defined */
     }
