@@ -10,6 +10,7 @@ public interface Piece {
     public boolean isBlack();
     public boolean isEmpty();
     public ArrayList<Move> getValidMoves();
+    public ArrayList<Coord> allCapturePos();
     public Coord getPos();
     public void setPos(Coord pos);
     public void incrementMoved();

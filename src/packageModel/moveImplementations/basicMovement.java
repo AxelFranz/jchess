@@ -36,4 +36,11 @@ public class basicMovement implements Move {
     {
         return moving + " : " + start + " -> " + dest;
     }
+
+
+    @Override
+    public Coord getCapturedPos() {
+        return null;
+    }
+
 }

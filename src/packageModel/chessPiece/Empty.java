@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 public class Empty implements Piece {
 
-
     @Override
     public boolean isWhite() {
         return false;
@@ -24,7 +23,6 @@ public class Empty implements Piece {
 
     @Override
     public void setValidMoves(Board board) {
-
     }
 
     @Override
@@ -34,6 +32,11 @@ public class Empty implements Piece {
 
     @Override
     public ArrayList<Move> getValidMoves() {
+        return null;
+    }
+
+    @Override
+    public ArrayList<Coord> allCapturePos() {
         return null;
     }
 
@@ -48,11 +51,13 @@ public class Empty implements Piece {
 
     @Override
     public void incrementMoved() {
-
     }
 
     @Override
     public void decrementMoved() {
+    }
 
+    public String toString(){
+        return "empty";
     }
 }

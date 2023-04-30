@@ -39,6 +39,13 @@ public class CaptureMovement implements Move
     }
 
     public String toString(){
+        if(captured.isEmpty())
+            return moving + " : " + start +  " -> " + dest;
         return moving + " cpatured " + captured + " : " + start +  " -> " + dest;
+    }
+
+    @Override
+    public Coord getCapturedPos() {
+        return dest;
     }
 }
