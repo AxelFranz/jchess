@@ -56,4 +56,5 @@ public abstract class NonEmpty implements Piece {
     public boolean neverMoved(){
         return moved == 0;
     }
+
 }

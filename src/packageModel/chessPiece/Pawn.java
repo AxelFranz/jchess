@@ -21,8 +21,8 @@ public class Pawn extends NonEmpty {
     }
 
     @Override
-    public ArrayList<Coord> allCapturePos() {
-        ArrayList res = new ArrayList<>();
+    public ArrayList<Coord> allCapturePos(Board board) {
+        ArrayList<Coord> res = new ArrayList<>();
         int dir = (this.isWhite())?(-1):(1);
         Coord.addToArray(res,getPos().addXY(-1,dir));
         Coord.addToArray(res,getPos().addXY(1,dir));
@@ -37,7 +37,8 @@ public class Pawn extends NonEmpty {
 
     @Override
     public String toString(){
-        return "Pawn";
+        String color = (isWhite())?("White "):("Black ");
+        return color + "Pawn";
     }
 
     private ArrayList<Move> genBasic(Board board)
@@ -60,9 +61,7 @@ public class Pawn extends NonEmpty {
         }
         return res;
     }
-    private boolean canCapture(Board board, Coord pos){
-        return Board.inBoard(pos) && (this.isWhite()!=board.getPiece(pos).isWhite()) ;
-    }
+
 
     private ArrayList<Move> genCapture(Board board){
         Object moveInput[]  = new Object[4];
@@ -71,7 +70,7 @@ public class Pawn extends NonEmpty {
         int pos[] = {-1,1};
         for( int i:pos){
             Coord tmp = getPos().addXY(i,dir);
-            if( canCapture(board,tmp)){
+            if( board.canCapture(this,tmp)){
                 moveInput[0] = this;
                 moveInput[1] = getPos();
                 moveInput[2] = tmp;

@@ -7,12 +7,12 @@ import java.util.ArrayList;
 public class Board {
     private Piece board[][];
     private MoveStack history;
-    Board(Piece[][] board, MoveStack history) {
+    public Board(Piece[][] board, MoveStack history) {
         this.board = board;
         this.history = history;
     }
 
-    Board() {
+    public Board() {
         this(new Piece[8][8], new MoveStack());
     }
     public Piece getPiece(Coord pos) {
@@ -22,6 +22,7 @@ public class Board {
         return board[x][y];
     }
     public void setPiece(Coord pos, Piece pc) {
+        board[pos.getX()][pos.getY()] = pc;
     }
 
     public void movePiece(Move newMove) {
@@ -55,7 +56,7 @@ public class Board {
                 tmp = getPiece(x,y);
 
                 if(!tmp.isEmpty() && tmp.isWhite()==white){
-                    dump=tmp.allCapturePos();
+                    dump=tmp.allCapturePos(this);
                     for(Coord pos: dump){
                         if(!result.contains(pos))
                             result.add(pos);
@@ -65,6 +66,10 @@ public class Board {
             }
         }
         return result;
+    }
+
+    public boolean canCapture(Piece pc, Coord pos){
+        return Board.inBoard(pos) && (pc.isWhite()!=getPiece(pos).isWhite()) ;
     }
     public boolean isEmptyTile(Coord pos){
         return getPiece(pos.getX(),pos.getY()).isEmpty();

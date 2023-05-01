@@ -17,7 +17,7 @@ public class King extends NonEmpty {
     }
 
     @Override
-    public ArrayList<Coord> allCapturePos() {
+    public ArrayList<Coord> allCapturePos(Board board) {
         return null;
     }
 

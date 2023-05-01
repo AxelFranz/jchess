@@ -1,9 +1,6 @@
 package packageModel.moveImplementations;
 
-import packageModel.Board;
-import packageModel.Coord;
-import packageModel.Move;
-import packageModel.Piece;
+import packageModel.*;
 import packageModel.chessPiece.Empty;
 
 public class basicMovement implements Move {
@@ -19,7 +16,7 @@ public class basicMovement implements Move {
     @Override
     public void undoMove(Board board) {
         board.setPiece(start, moving);
-        board.setPiece(dest,new Empty());
+        board.setPiece(dest, PieceFactory.newPiece(PieceId.EMPTY,null));
         moving.setPos(start);
         moving.decrementMoved();
     }
@@ -27,7 +24,7 @@ public class basicMovement implements Move {
     @Override
     public void makeMove(Board board) {
         board.setPiece(dest, moving);
-        board.setPiece(start, new Empty() /* wil soon replace empty with piece factory*/);
+        board.setPiece(start, PieceFactory.newPiece(PieceId.EMPTY,null) /* wil soon replace empty with piece factory*/);
         moving.incrementMoved();
     }
 

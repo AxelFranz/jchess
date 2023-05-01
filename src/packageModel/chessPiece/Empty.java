@@ -36,7 +36,7 @@ public class Empty implements Piece {
     }
 
     @Override
-    public ArrayList<Coord> allCapturePos() {
+    public ArrayList<Coord> allCapturePos(Board board) {
         return null;
     }
 
