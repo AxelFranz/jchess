@@ -34,19 +34,23 @@ public class Board {
     public void boardSet(int gamemode) {
         /* should be implemented */
     }
-    public boolean isCheck(boolean white) {
+    public boolean isCheck(boolean white, Move test) {
+        test.makeMove(this);
         ArrayList<Coord> allcapturable = allCapturableTiles(!white);
         Piece tmp;
         for(int x = 0; x <8 ; x++) {
             for(int y = 0; y <8 ; y++) {
                 tmp = getPiece(x,y);
                 if( tmp.isWhite() == white && tmp.toString()=="King" ){
-                    if(allcapturable.contains(new Coord(x,y)))
+                    if(allcapturable.contains(new Coord(x,y))) {
+                        test.undoMove(this);
                         return true;
-                }
+                    }
 
+                }
             }
         }
+        test.undoMove(this);
         return false;
     }
     private ArrayList<Coord> allCapturableTiles(boolean white){

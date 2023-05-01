@@ -31,6 +31,7 @@ public class Pawn extends NonEmpty {
 
     @Override
     public void setValidMoves(Board board) {
+        availableMoves.clear();
         availableMoves.addAll(genBasic(board));
         availableMoves.addAll(genCapture(board));
     }
@@ -47,12 +48,15 @@ public class Pawn extends NonEmpty {
         ArrayList<Move> res = new ArrayList<>();
         int dir = (this.isWhite())?(-1):(1);
         Coord tmp = getPos().addY(dir);
+        Move toTest;
         if( Board.inBoard(tmp) && !board.isEmptyTile(tmp) )
         {
             moveInput[0]= this;
             moveInput[1]= getPos();
             moveInput[2]= tmp;
-            res.add(MoveFactory.newMove("basic",moveInput));
+            toTest = MoveFactory.newMove("basic",moveInput);
+            if(!board.isCheck(isWhite(),toTest))
+                res.add(toTest);
             tmp = getPos().addY(2*dir);
             if(neverMoved() && Board.inBoard(tmp) && !board.isEmptyTile(tmp) ){
                 moveInput[2] = tmp;
@@ -66,6 +70,7 @@ public class Pawn extends NonEmpty {
     private ArrayList<Move> genCapture(Board board){
         Object moveInput[]  = new Object[4];
         ArrayList<Move> res = new ArrayList<>();
+        Move toTest;
         int dir = (this.isWhite())?(-1):(1);
         int pos[] = {-1,1};
         for( int i:pos){
@@ -75,7 +80,9 @@ public class Pawn extends NonEmpty {
                 moveInput[1] = getPos();
                 moveInput[2] = tmp;
                 moveInput[3] = board.getPiece(tmp);
-                res.add( MoveFactory.newMove("capture",moveInput));
+                toTest = MoveFactory.newMove("capture",moveInput);
+                if(!board.isCheck(isWhite(),toTest))
+                    res.add( toTest );
             }
         }
         return res;
