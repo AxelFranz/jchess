@@ -56,21 +56,19 @@ public class King extends NonEmpty {
             for(int j = 0; j < 3 ; j++){
                 if( i != 1 || j != 1){
                     tmp = getPos().addXY(i-1,j-1);
-                    if(Board.inBoard(tmp)){
 
-                        if(board.getPiece(tmp).isEmpty()){
-                            builder[2] = tmp;
-                            toTest = MoveFactory.newMove("basic",builder);
-                            if(!board.isCheck(isWhite(),toTest))
-                                res.add(toTest);
+                    if(board.canMove(tmp)){
+                        builder[2] = tmp;
+                        toTest = MoveFactory.newMove("basic",builder);
+                        if(!board.isCheck(isWhite(),toTest))
+                            res.add(toTest);
 
-                        } else if (board.getPiece(tmp).isWhite() != isWhite()) {
-                            builder[2] = tmp;
-                            builder[3] = board.getPiece(tmp);
-                            toTest = MoveFactory.newMove("capture",builder);
-                            if(!board.isCheck(isWhite(),toTest))
-                                res.add(toTest);
-                        }
+                    } else if (board.canCapture(this,tmp)) {
+                        builder[2] = tmp;
+                        builder[3] = board.getPiece(tmp);
+                        toTest = MoveFactory.newMove("capture",builder);
+                        if(!board.isCheck(isWhite(),toTest))
+                            res.add(toTest);
                     }
 
                 }

@@ -80,6 +80,9 @@ public class Board {
     public boolean canCapture(Piece pc, Coord pos){
         return Board.inBoard(pos) && (pc.isWhite()!=getPiece(pos).isWhite()) ;
     }
+    public boolean canMove( Coord pos){
+        return Board.inBoard(pos) && isEmptyTile(pos);
+    }
     public boolean isEmptyTile(Coord pos){
         return getPiece(pos.getX(),pos.getY()).isEmpty();
     }

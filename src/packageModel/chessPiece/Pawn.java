@@ -49,7 +49,7 @@ public class Pawn extends NonEmpty {
         int dir = (this.isWhite())?(-1):(1);
         Coord tmp = getPos().addY(dir);
         Move toTest;
-        if( Board.inBoard(tmp) && !board.isEmptyTile(tmp) )
+        if( board.canMove(tmp) )
         {
             moveInput[0]= this;
             moveInput[1]= getPos();

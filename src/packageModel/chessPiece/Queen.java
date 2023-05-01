@@ -35,7 +35,7 @@ public class Queen extends NonEmpty{
                 tmp = Coord.addCoord(tmp,dir);
                 Coord.addToArray(res,tmp);
             }
-            while(Board.inBoard(tmp) && board.getPiece(tmp).isEmpty());
+            while(board.canMove(tmp));
         }
         return res;
     }
@@ -66,7 +66,7 @@ public class Queen extends NonEmpty{
 
             tmp = Coord.addCoord(start,dir);
 
-            while(Board.inBoard(tmp) && board.getPiece(tmp).isEmpty()){
+            while(board.canMove(tmp)){
                 builder[2] = tmp;
                 toTest = MoveFactory.newMove("basic",builder);
                 if(!board.isCheck(isWhite(),toTest))
@@ -74,7 +74,7 @@ public class Queen extends NonEmpty{
                 tmp = Coord.addCoord(tmp,dir);
             }
 
-            if(Board.inBoard(tmp) && board.getPiece(tmp).isWhite() != isWhite()){
+            if(board.canCapture(this,tmp)){
 
                 builder[2] = tmp;
                 builder[3] =  board.getPiece(tmp);

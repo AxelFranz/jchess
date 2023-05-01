@@ -48,15 +48,15 @@ public class Knight extends NonEmpty{
             for(int j = -1 ; j < 2 ; j+= 2){
                 z[0] = start.addXY(2*j,i);
                 z[1] = start.addXY(j, 2*i);
-                for(Coord dest: z){
-                    if(Board.inBoard(dest) && board.getPiece(dest).isEmpty()){
-                        builder[2] = dest;
+                for(Coord tmp: z){
+                    if(board.canMove(tmp)){
+                        builder[2] = tmp;
                         toTest = MoveFactory.newMove("basic",builder);
                         if(!board.isCheck(isWhite(),toTest))
                             res.add(toTest);
-                    }else if(Board.inBoard(dest) && board.getPiece(dest).isWhite() != isWhite()){
-                        builder[2] = dest;
-                        builder[3] =  board.getPiece(dest);
+                    }else if(board.canCapture(this,tmp)){
+                        builder[2] = tmp;
+                        builder[3] =  board.getPiece(tmp);
                         toTest = MoveFactory.newMove("capture",builder);
                         if(!board.isCheck(isWhite(),toTest))
                             res.add(toTest);
