@@ -39,9 +39,6 @@ public class Queen extends NonEmpty{
             while(Board.inBoard(tmp) && board.getPiece(tmp).isEmpty());
         }
         return res;
-
-
-
     }
 
     @Override

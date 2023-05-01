@@ -7,16 +7,8 @@
     <list default="true" id="ee3490b5-a15d-4b26-a220-7b874758dc6c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/packageModel/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/packageModel/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/packageModel/Piece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/packageModel/Piece.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/packageModel/chessPiece/Bishop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/packageModel/chessPiece/Bishop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/packageModel/chessPiece/Empty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/packageModel/chessPiece/Empty.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/packageModel/chessPiece/King.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/packageModel/chessPiece/King.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/packageModel/chessPiece/Knight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/packageModel/chessPiece/Knight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/packageModel/chessPiece/NonEmpty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/packageModel/chessPiece/NonEmpty.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/packageModel/chessPiece/Pawn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/packageModel/chessPiece/Pawn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/packageModel/GameHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/packageModel/GameHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/packageModel/chessPiece/Queen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/packageModel/chessPiece/Queen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/packageModel/chessPiece/Rook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/packageModel/chessPiece/Rook.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/packageModel/moveImplementations/basicMovement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/packageModel/moveImplementations/basicMovement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/packageTest/PieceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/packageTest/PieceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

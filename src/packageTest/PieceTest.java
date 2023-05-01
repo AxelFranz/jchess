@@ -25,7 +25,7 @@ public class PieceTest {
         System.out.println(testPawn);
         System.out.println(testPawn.getPos());
         System.out.println(testPawn.allCapturePos(null));
-        testPawn.setPos(new Coord(2,5));
+        testPawn.setPos(new Coord(4,4));
         System.out.println(testPawn.getPos());
         System.out.println(testPawn.allCapturePos(null));
         Piece testQueen = PieceFactory.newPiece(PieceId.QUEEN,array);
@@ -35,6 +35,10 @@ public class PieceTest {
         System.out.println(testQueen.allCapturePos(testBoard));
         testQueen.setPos(new Coord(0,0));
         testBoard.setPiece(testQueen.getPos(),testQueen);
+        System.out.println(testQueen);
+        System.out.println(testQueen.getPos());
+        System.out.println(testQueen.allCapturePos(testBoard));
+        testBoard.setPiece(testPawn.getPos(),testPawn);
         System.out.println(testQueen);
         System.out.println(testQueen.getPos());
         System.out.println(testQueen.allCapturePos(testBoard));

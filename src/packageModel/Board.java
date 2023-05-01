@@ -26,6 +26,9 @@ public class Board {
     }
 
     public void movePiece(Move newMove) {
+        newMove.makeMove(this);
+        history.addMove(newMove);
+
     }
 
     public void boardSet(int gamemode) {
