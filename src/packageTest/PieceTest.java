@@ -18,18 +18,23 @@ public class PieceTest {
         {
             System.out.println("OK");
         }
+
         Object array[] = new Object[2];
         array[0] = true;
+        /*
         array[1] = new Coord(1,6);
         Piece testPawn = PieceFactory.newPiece(PieceId.PAWN,array);
+
         System.out.println(testPawn);
         System.out.println(testPawn.getPos());
         System.out.println(testPawn.allCapturePos(null));
         testPawn.setPos(new Coord(4,4));
         System.out.println(testPawn.getPos());
         System.out.println(testPawn.allCapturePos(null));
+
         Piece testQueen = PieceFactory.newPiece(PieceId.QUEEN,array);
         testBoard.setPiece(testQueen.getPos(),testQueen);
+
         System.out.println(testQueen);
         System.out.println(testQueen.getPos());
         System.out.println(testQueen.allCapturePos(testBoard));
@@ -42,5 +47,21 @@ public class PieceTest {
         System.out.println(testQueen);
         System.out.println(testQueen.getPos());
         System.out.println(testQueen.allCapturePos(testBoard));
+        */
+
+
+
+        array[1] = new Coord(2,2);
+        Piece testKnight = PieceFactory.newPiece(PieceId.KNIGHT,array);
+        testBoard.setPiece((Coord)array[1],testKnight);
+
+        System.out.println(testKnight);
+        System.out.println(testKnight.getPos());
+        System.out.println(testKnight.allCapturePos(testBoard));
+        testKnight.setValidMoves(testBoard);
+        System.out.println(testKnight.getValidMoves());
+
+
+
     }
 }

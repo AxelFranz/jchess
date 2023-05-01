@@ -31,6 +31,11 @@ public class Empty implements Piece {
     }
 
     @Override
+    public boolean isKing() {
+        return false;
+    }
+
+    @Override
     public ArrayList<Move> getValidMoves() {
         return null;
     }
@@ -59,5 +64,10 @@ public class Empty implements Piece {
 
     public String toString(){
         return "empty";
+    }
+
+    @Override
+    public String name() {
+        return "Empty tile";
     }
 }

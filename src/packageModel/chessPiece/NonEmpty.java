@@ -28,6 +28,10 @@ public abstract class NonEmpty implements Piece {
         return !white;
     }
     @Override
+    public boolean isKing(){
+        return false;
+    }
+    @Override
     public boolean isEmpty(){
         return false;
     }
@@ -55,6 +59,15 @@ public abstract class NonEmpty implements Piece {
     @Override
     public boolean neverMoved(){
         return moved == 0;
+    }
+    public String name(){
+        return "Non Empty";
+    }
+
+    @Override
+    public String toString(){
+        String color = (isWhite())?("White "):("Black ");
+        return color + name();
     }
 
 }

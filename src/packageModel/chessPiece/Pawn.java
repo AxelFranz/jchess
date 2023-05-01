@@ -13,6 +13,7 @@ public class Pawn extends NonEmpty {
     private ArrayList<Move> availableMoves;
     public Pawn(boolean white, Coord pos) {
         super(white, pos);
+        availableMoves = new ArrayList<>();
     }
 
     @Override
@@ -37,9 +38,8 @@ public class Pawn extends NonEmpty {
     }
 
     @Override
-    public String toString(){
-        String color = (isWhite())?("White "):("Black ");
-        return color + "Pawn";
+    public String name() {
+        return "Pawn";
     }
 
     private ArrayList<Move> genBasic(Board board)

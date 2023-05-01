@@ -42,4 +42,12 @@ public class Coord {
             lst.add(pos);
     }
 
+    public boolean isIn(ArrayList<Coord> lst){
+        for( Coord pos: lst){
+            if( pos.getX() == x && pos.getY() == y)
+                return true;
+        }
+        return false;
+    }
+
 }

@@ -28,35 +28,37 @@ public class Board {
     public void movePiece(Move newMove) {
         newMove.makeMove(this);
         history.addMove(newMove);
-
     }
 
     public void boardSet(int gamemode) {
         /* should be implemented */
     }
     public boolean isCheck(boolean white, Move test) {
-        test.makeMove(this);
-        ArrayList<Coord> allcapturable = allCapturableTiles(!white);
+        if(test != null)
+            test.makeMove(this);
+        ArrayList<Coord> allCapture = allCaptureTiles(!white);
         Piece tmp;
         for(int x = 0; x <8 ; x++) {
             for(int y = 0; y <8 ; y++) {
                 tmp = getPiece(x,y);
-                if( tmp.isWhite() == white && tmp.toString()=="King" ){
-                    if(allcapturable.contains(new Coord(x,y))) {
-                        test.undoMove(this);
+                if( tmp.isWhite() == white && tmp.isKing() ){
+                    if(new Coord(x,y).isIn(allCapture)) {
+                        if(test != null)
+                            test.undoMove(this);
                         return true;
                     }
 
                 }
             }
         }
-        test.undoMove(this);
+        if(test != null)
+            test.undoMove(this);
         return false;
     }
-    private ArrayList<Coord> allCapturableTiles(boolean white){
+    private ArrayList<Coord> allCaptureTiles(boolean white){
         ArrayList<Coord> result = new ArrayList<>();
-        ArrayList<Coord> dump = null;
-        Piece tmp = null;
+        ArrayList<Coord> dump;
+        Piece tmp;
         for(int x = 0 ; x < 8 ; x++) {
             for(int y = 0 ; y < 8 ; y++){
 

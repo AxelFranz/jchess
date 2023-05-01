@@ -9,6 +9,7 @@ public interface Piece {
     public boolean isWhite();
     public boolean isBlack();
     public boolean isEmpty();
+    public boolean isKing();
     public ArrayList<Move> getValidMoves();
     public ArrayList<Coord> allCapturePos(Board board);
     public Coord getPos();
@@ -18,6 +19,7 @@ public interface Piece {
     public boolean neverMoved();
     public void setValidMoves(Board board);
     public String toString();
+    public String name();
 
 
 

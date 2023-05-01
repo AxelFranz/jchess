@@ -9,6 +9,7 @@ public class Queen extends NonEmpty{
     private ArrayList<Move> availableMoves;
     public Queen(boolean white, Coord pos) {
         super(white, pos);
+        availableMoves = new ArrayList<>();
     }
 
     @Override
@@ -52,6 +53,7 @@ public class Queen extends NonEmpty{
         Object builder[] = new Object[4];
         Coord start = getPos();
         Coord tmp;
+        Move toTest;
         for(int i = 0 ; i < 3 ; i++) {
             for(int j = 0; j < 3; j++) {
                 if(i != 1 || j != 1)
@@ -66,16 +68,19 @@ public class Queen extends NonEmpty{
 
             while(Board.inBoard(tmp) && board.getPiece(tmp).isEmpty()){
                 builder[2] = tmp;
-                res.add(MoveFactory.newMove("basic",builder));
+                toTest = MoveFactory.newMove("basic",builder);
+                if(!board.isCheck(isWhite(),toTest))
+                    res.add(toTest);
                 tmp = Coord.addCoord(tmp,dir);
             }
 
-            if(board.getPiece(tmp).isWhite() != isWhite()){
+            if(Board.inBoard(tmp) && board.getPiece(tmp).isWhite() != isWhite()){
 
                 builder[2] = tmp;
                 builder[3] =  board.getPiece(tmp);
-                res.add(MoveFactory.newMove("capture",builder));
-
+                toTest = MoveFactory.newMove("capture",builder);
+                if(!board.isCheck(isWhite(),toTest))
+                    res.add(toTest);
             }
         }
         return res;
@@ -83,8 +88,7 @@ public class Queen extends NonEmpty{
 
 
     @Override
-    public String toString(){
-        String color = (isWhite())?("White "):("Black ");
-        return color + "Queen";
+    public String name() {
+        return "Queen";
     }
 }
