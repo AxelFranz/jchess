@@ -2,6 +2,7 @@ package packageModel;
 
 import packageModel.chessPiece.*;
 
+
 public class PieceFactory {
 
     public static Piece newPiece( PieceId id,Object array[])
@@ -26,5 +27,15 @@ public class PieceFactory {
             default:
                 return null;
         }
+    }
+
+    public static Piece[][] newBoard( int x,int y){
+        Piece board[][] = new Piece[y][x];
+        for(int i = 0 ; i < y ; i ++) {
+            for(int j = 0 ; j < x ; j++) {
+                board[i][j] = newPiece(PieceId.EMPTY,null);
+            }
+        }
+        return board;
     }
 }

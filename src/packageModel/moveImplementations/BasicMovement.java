@@ -1,13 +1,12 @@
 package packageModel.moveImplementations;
 
 import packageModel.*;
-import packageModel.chessPiece.Empty;
 
-public class basicMovement implements Move {
+public class BasicMovement implements Move {
     private final Piece moving;
     private final Coord start;
     private final Coord dest;
-    public basicMovement(Piece moving, Coord start, Coord dest)
+    public BasicMovement(Piece moving, Coord start, Coord dest)
     {
         this.moving = moving;
         this.start = start;

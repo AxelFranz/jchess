@@ -1,5 +1,7 @@
 package packageModel;
 
+import packageModel.chessPiece.Empty;
+
 import java.util.ArrayList;
 
 
@@ -13,7 +15,7 @@ public class Board {
     }
 
     public Board() {
-        this(new Piece[8][8], new MoveStack());
+        this(PieceFactory.newBoard(8,8), new MoveStack());
     }
     public Piece getPiece(Coord pos) {
         return board[pos.getX()][pos.getY()];
