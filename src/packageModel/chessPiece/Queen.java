@@ -61,14 +61,13 @@ public class Queen extends NonEmpty{
             }
         }
         builder[0] = this;
-        builder[1] = start;
         for( Coord dir: direction) {
 
             tmp = Coord.addCoord(start,dir);
 
             while(board.canMove(tmp)){
-                builder[2] = tmp;
-                toTest = MoveFactory.newMove("basic",builder);
+                builder[1] = tmp;
+                toTest = Factory.newMove("basic",builder);
                 if(!board.isCheck(isWhite(),toTest))
                     res.add(toTest);
                 tmp = Coord.addCoord(tmp,dir);
@@ -76,9 +75,9 @@ public class Queen extends NonEmpty{
 
             if(board.canCapture(this,tmp)){
 
-                builder[2] = tmp;
-                builder[3] =  board.getPiece(tmp);
-                toTest = MoveFactory.newMove("capture",builder);
+                builder[1] = tmp;
+                builder[2] =  board.getPiece(tmp);
+                toTest = Factory.newMove("capture",builder);
                 if(!board.isCheck(isWhite(),toTest))
                     res.add(toTest);
             }
@@ -90,5 +89,10 @@ public class Queen extends NonEmpty{
     @Override
     public String name() {
         return "Queen";
+    }
+
+    @Override
+    public char code(){
+        return (isWhite())?('Q'):('q');
     }
 }

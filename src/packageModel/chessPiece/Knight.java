@@ -41,7 +41,6 @@ public class Knight extends NonEmpty{
         Object builder[] = new Object[4];
         builder[0] = this;
         Coord start = getPos(), z[] = new Coord[2];
-        builder[1] = start;
         Move toTest;
 
         for(int i = -1; i < 2 ; i+= 2){
@@ -50,14 +49,14 @@ public class Knight extends NonEmpty{
                 z[1] = start.addXY(j, 2*i);
                 for(Coord tmp: z){
                     if(board.canMove(tmp)){
-                        builder[2] = tmp;
-                        toTest = MoveFactory.newMove("basic",builder);
+                        builder[1] = tmp;
+                        toTest = Factory.newMove("basic",builder);
                         if(!board.isCheck(isWhite(),toTest))
                             res.add(toTest);
                     }else if(board.canCapture(this,tmp)){
-                        builder[2] = tmp;
-                        builder[3] =  board.getPiece(tmp);
-                        toTest = MoveFactory.newMove("capture",builder);
+                        builder[1] = tmp;
+                        builder[2] =  board.getPiece(tmp);
+                        toTest = Factory.newMove("capture",builder);
                         if(!board.isCheck(isWhite(),toTest))
                             res.add(toTest);
                     }
@@ -70,5 +69,10 @@ public class Knight extends NonEmpty{
     @Override
     public String name(){
         return "Knight";
+    }
+
+    @Override
+    public char code(){
+        return (isWhite())?('N'):('n');
     }
 }

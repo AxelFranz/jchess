@@ -6,24 +6,25 @@ public class BasicMovement implements Move {
     private final Piece moving;
     private final Coord start;
     private final Coord dest;
-    public BasicMovement(Piece moving, Coord start, Coord dest)
+    public BasicMovement(Piece moving, Coord dest)
     {
         this.moving = moving;
-        this.start = start;
+        start = Coord.addCoord(moving.getPos(), new Coord(0,0));
         this.dest = dest;
     }
     @Override
     public void undoMove(Board board) {
+        Piece empty = Factory.newPiece(PcId.EMPTY,null);
         board.setPiece(start, moving);
-        board.setPiece(dest, PieceFactory.newPiece(PieceId.EMPTY,null));
-        moving.setPos(start);
+        board.setPiece(dest, empty);
         moving.decrementMoved();
     }
 
     @Override
     public void makeMove(Board board) {
+        Piece empty = Factory.newPiece(PcId.EMPTY,null);
         board.setPiece(dest, moving);
-        board.setPiece(start, PieceFactory.newPiece(PieceId.EMPTY,null) /* wil soon replace empty with piece factory*/);
+        board.setPiece(start, empty);
         moving.incrementMoved();
     }
 

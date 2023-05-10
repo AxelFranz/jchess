@@ -51,22 +51,21 @@ public class King extends NonEmpty {
         Coord tmp ;
         Move toTest;
         builder[0] = this;
-        builder[1] = getPos();
         for(int i = 0 ; i < 3 ; i++){
             for(int j = 0; j < 3 ; j++){
                 if( i != 1 || j != 1){
                     tmp = getPos().addXY(i-1,j-1);
 
                     if(board.canMove(tmp)){
-                        builder[2] = tmp;
-                        toTest = MoveFactory.newMove("basic",builder);
+                        builder[1] = tmp;
+                        toTest = Factory.newMove("basic",builder);
                         if(!board.isCheck(isWhite(),toTest))
                             res.add(toTest);
 
                     } else if (board.canCapture(this,tmp)) {
-                        builder[2] = tmp;
-                        builder[3] = board.getPiece(tmp);
-                        toTest = MoveFactory.newMove("capture",builder);
+                        builder[1] = tmp;
+                        builder[2] = board.getPiece(tmp);
+                        toTest = Factory.newMove("capture",builder);
                         if(!board.isCheck(isWhite(),toTest))
                             res.add(toTest);
                     }
@@ -75,6 +74,10 @@ public class King extends NonEmpty {
             }
         }
         return res;
+    }
+    @Override
+    public char code(){
+        return (isWhite())?('K'):('k');
     }
 
 }

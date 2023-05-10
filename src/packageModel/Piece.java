@@ -21,6 +21,8 @@ public interface Piece {
     public String toString();
     public String name();
 
+    public char code();
+
 
 
 

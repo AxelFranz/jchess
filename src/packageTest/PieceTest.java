@@ -8,12 +8,12 @@ public class PieceTest {
         for(int i = 0; i < 8 ; i ++){
             for(int j = 0; j < 8 ; j++)
             {
-                testBoard.setPiece(new Coord(i,j), PieceFactory.newPiece(PieceId.EMPTY,null));
+                testBoard.setPiece(new Coord(i,j), Factory.newPiece(PcId.EMPTY,null));
                 if(testBoard.getPiece(new Coord(i,j)).isEmpty())
                     System.out.println("OK " + (8*i + j) );
             }
         }
-        Piece empty = PieceFactory.newPiece(PieceId.EMPTY,null);
+        Piece empty = Factory.newPiece(PcId.EMPTY,null);
         if(empty.isEmpty())
         {
             System.out.println("OK");
@@ -21,18 +21,28 @@ public class PieceTest {
 
         Object array[] = new Object[2];
         array[0] = true;
-        /*
+
         array[1] = new Coord(1,6);
-        Piece testPawn = PieceFactory.newPiece(PieceId.PAWN,array);
+        Piece testPawn = Factory.newPiece(PcId.PAWN,array);
 
         System.out.println(testPawn);
         System.out.println(testPawn.getPos());
         System.out.println(testPawn.allCapturePos(null));
+        testPawn.setValidMoves(testBoard);
+        System.out.println(testPawn.getValidMoves());
+        testBoard.printBoard();
         testPawn.setPos(new Coord(4,4));
+        testPawn.incrementMoved();
+
         System.out.println(testPawn.getPos());
         System.out.println(testPawn.allCapturePos(null));
+        testPawn.setValidMoves(testBoard);
+        System.out.println(testPawn.getValidMoves());
+        testBoard.printBoard();
 
-        Piece testQueen = PieceFactory.newPiece(PieceId.QUEEN,array);
+
+        /*
+        Piece testQueen = Factory.newPiece(PcId.QUEEN,array);
         testBoard.setPiece(testQueen.getPos(),testQueen);
 
         System.out.println(testQueen);
@@ -50,9 +60,9 @@ public class PieceTest {
         */
 
 
-
+        /*
         array[1] = new Coord(2,2);
-        Piece testKnight = PieceFactory.newPiece(PieceId.KNIGHT,array);
+        Piece testKnight = Factory.newPiece(PcId.KNIGHT,array);
         testBoard.setPiece((Coord)array[1],testKnight);
 
         System.out.println(testKnight);
@@ -60,6 +70,8 @@ public class PieceTest {
         System.out.println(testKnight.allCapturePos(testBoard));
         testKnight.setValidMoves(testBoard);
         System.out.println(testKnight.getValidMoves());
+         */
+
 
 
 

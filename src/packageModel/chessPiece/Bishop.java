@@ -61,7 +61,6 @@ public class Bishop extends NonEmpty {
         Object builder[] = new Object[4];
         builder[0] = this;
         Coord start = getPos();
-        builder[1] = start;
         Coord tmp;
         Move toTest;
         for( Coord dir: direction) {
@@ -69,8 +68,8 @@ public class Bishop extends NonEmpty {
             tmp = Coord.addCoord(start,dir);
 
             while(board.canMove(tmp)){
-                builder[2] = tmp;
-                toTest = MoveFactory.newMove("basic",builder);
+                builder[1] = tmp;
+                toTest = Factory.newMove("basic",builder);
                 if(!board.isCheck(isWhite(),toTest))
                     res.add(toTest);
                 tmp = Coord.addCoord(tmp,dir);
@@ -78,13 +77,18 @@ public class Bishop extends NonEmpty {
 
             if(board.canCapture(this,tmp)){
 
-                builder[2] = tmp;
-                builder[3] =  board.getPiece(tmp);
-                toTest = MoveFactory.newMove("capture",builder);
+                builder[1] = tmp;
+                builder[2] =  board.getPiece(tmp);
+                toTest = Factory.newMove("capture",builder);
                 if(!board.isCheck(isWhite(),toTest))
                     res.add(toTest);
             }
         }
         return res;
+    }
+
+    @Override
+    public char code(){
+        return (isWhite())?('B'):('b');
     }
 }

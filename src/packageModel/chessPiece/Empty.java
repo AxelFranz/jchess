@@ -5,6 +5,9 @@ import packageModel.*;
 import java.util.ArrayList;
 
 public class Empty implements Piece {
+    public Empty(){
+
+    }
 
     @Override
     public boolean isWhite() {
@@ -69,5 +72,10 @@ public class Empty implements Piece {
     @Override
     public String name() {
         return "Empty tile";
+    }
+
+    @Override
+    public char code(){
+        return ' ';
     }
 }

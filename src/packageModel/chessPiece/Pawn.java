@@ -3,7 +3,7 @@ package packageModel.chessPiece;
 import packageModel.Board;
 import packageModel.Coord;
 import packageModel.Move;
-import packageModel.MoveFactory;
+import packageModel.Factory;
 
 
 import java.util.ArrayList;
@@ -52,15 +52,14 @@ public class Pawn extends NonEmpty {
         if( board.canMove(tmp) )
         {
             moveInput[0]= this;
-            moveInput[1]= getPos();
-            moveInput[2]= tmp;
-            toTest = MoveFactory.newMove("basic",moveInput);
+            moveInput[1]= tmp;
+            toTest = Factory.newMove("basic",moveInput);
             if(!board.isCheck(isWhite(),toTest))
                 res.add(toTest);
             tmp = getPos().addY(2*dir);
-            if(neverMoved() && Board.inBoard(tmp) && !board.isEmptyTile(tmp) ){
-                moveInput[2] = tmp;
-                res.add(MoveFactory.newMove("basic",moveInput));
+            if(neverMoved() && Board.inBoard(tmp) && board.isEmptyTile(tmp) ){
+                moveInput[1] = tmp;
+                res.add(Factory.newMove("basic",moveInput));
             }
         }
         return res;
@@ -77,14 +76,18 @@ public class Pawn extends NonEmpty {
             Coord tmp = getPos().addXY(i,dir);
             if( board.canCapture(this,tmp)){
                 moveInput[0] = this;
-                moveInput[1] = getPos();
-                moveInput[2] = tmp;
-                moveInput[3] = board.getPiece(tmp);
-                toTest = MoveFactory.newMove("capture",moveInput);
+                moveInput[1] = tmp;
+                moveInput[2] = board.getPiece(tmp);
+                toTest = Factory.newMove("capture",moveInput);
                 if(!board.isCheck(isWhite(),toTest))
                     res.add( toTest );
             }
         }
         return res;
+    }
+
+    @Override
+    public char code(){
+        return (isWhite())?('P'):('p');
     }
 }

@@ -1,6 +1,6 @@
 package packageModel;
 
-public enum PieceId {
+public enum PcId {
     EMPTY,
     PAWN,
     KING,

@@ -5,12 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ee3490b5-a15d-4b26-a220-7b874758dc6c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/packageModel/moveImplementations/CastlingMovement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/packageModel/moveImplementations/EnPassantMovement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/packageTest/BoardTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/packageModel/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/packageModel/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/packageModel/MoveFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/packageModel/MoveFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/packageModel/PieceFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/packageModel/PieceFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/packageModel/moveImplementations/basicMovement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/packageModel/moveImplementations/BasicMovement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/packageModel/Coord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/packageModel/Coord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/packageModel/GameHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/packageModel/GameHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/packageModel/MoveFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/packageModel/Piece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/packageModel/Piece.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/packageModel/PieceFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/packageModel/Factory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/packageModel/PieceId.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/packageModel/PcId.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/packageModel/chessPiece/Bishop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/packageModel/chessPiece/Bishop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/packageModel/chessPiece/Empty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/packageModel/chessPiece/Empty.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/packageModel/chessPiece/King.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/packageModel/chessPiece/King.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/packageModel/chessPiece/Knight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/packageModel/chessPiece/Knight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/packageModel/chessPiece/NonEmpty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/packageModel/chessPiece/NonEmpty.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/packageModel/chessPiece/Pawn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/packageModel/chessPiece/Pawn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/packageModel/chessPiece/Queen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/packageModel/chessPiece/Queen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/packageModel/chessPiece/Rook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/packageModel/chessPiece/Rook.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/packageModel/moveImplementations/BasicMovement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/packageModel/moveImplementations/BasicMovement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/packageModel/moveImplementations/CaptureMovement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/packageModel/moveImplementations/CaptureMovement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/packageTest/CheckTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/packageTest/CheckTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/packageTest/CoordTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/packageTest/CoordTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/packageTest/PieceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/packageTest/PieceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,11 +69,26 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
+    "settings.editor.selected.configurable": "inlay.hints",
     "settings.editor.splitter.proportion": "0.22916667",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="BoardTest" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="packageTest.BoardTest" />
+      <module name="jchess" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="packageTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

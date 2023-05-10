@@ -1,3 +1,4 @@
+package packageTest;
 
 import packageModel.*;
 
@@ -7,17 +8,17 @@ public class CheckTest {
         for(int i = 0; i < 8 ; i ++){
             for(int j = 0; j < 8 ; j++)
             {
-                testBoard.setPiece(new Coord(i,j), PieceFactory.newPiece(PieceId.EMPTY,null));
+                testBoard.setPiece(new Coord(i,j), Factory.newPiece(PcId.EMPTY,null));
             }
         }
-        Object pcBuild[] = new Object[2];
+        Object[] pcBuild = new Object[2];
         pcBuild[0] = true;
         pcBuild[1] = new Coord(0,0);
-        Piece king = PieceFactory.newPiece(PieceId.KING,pcBuild);
+        Piece king = Factory.newPiece(PcId.KING,pcBuild);
         testBoard.setPiece((Coord)pcBuild[1],king);
-        Piece empty = PieceFactory.newPiece(PieceId.EMPTY, null);
-        pcBuild[1] = new Coord(7,1);
-        Piece queen = PieceFactory.newPiece(PieceId.QUEEN,pcBuild);
+        Piece empty = Factory.newPiece(PcId.EMPTY, null);
+        pcBuild[1] = new Coord(1,7);
+        Piece queen = Factory.newPiece(PcId.QUEEN,pcBuild);
         testBoard.setPiece((Coord)pcBuild[1],queen);
 
         System.out.println(testBoard.getPiece(new Coord(0,0)));
@@ -26,9 +27,9 @@ public class CheckTest {
         System.out.println(testBoard.getPiece(new Coord(0,0)).getValidMoves());
         System.out.println(testBoard.isCheck(true,null));
         pcBuild[0] = false;
-        pcBuild[1] = new Coord(0,2);
+        pcBuild[1] = new Coord(2,0);
 
-        testBoard.setPiece((Coord)pcBuild[1],PieceFactory.newPiece(PieceId.QUEEN,pcBuild));
+        testBoard.setPiece((Coord)pcBuild[1], Factory.newPiece(PcId.QUEEN,pcBuild));
 
         System.out.println(testBoard.getPiece(new Coord(0,0)));
         System.out.println(testBoard.getPiece(new Coord(0,0)).allCapturePos(testBoard));
@@ -36,21 +37,30 @@ public class CheckTest {
         System.out.println(testBoard.getPiece(new Coord(0,0)).getValidMoves());
         System.out.println(testBoard.isCheck(true,null));
 
-        System.out.println(testBoard.getPiece(new Coord(7,1)));
-        System.out.println(testBoard.getPiece(new Coord(7,1)).allCapturePos(testBoard));
-        testBoard.getPiece(new Coord(7,1)).setValidMoves(testBoard);
-        System.out.println(testBoard.getPiece(new Coord(7,1)).getValidMoves());
+        System.out.println(testBoard.getPiece(new Coord(1,7)));
+        System.out.println(testBoard.getPiece(new Coord(1,7)).allCapturePos(testBoard));
+        testBoard.getPiece(new Coord(1,7)).setValidMoves(testBoard);
+        System.out.println(testBoard.getPiece(new Coord(1,7)).getValidMoves());
         System.out.println(testBoard.isCheck(true,null));
 
-        testBoard.setPiece(new Coord(1,0),king);
-        king.setPos(new Coord(1,0));
-        testBoard.setPiece(new Coord(0,0),empty);
 
-        System.out.println(testBoard.getPiece(new Coord(1,0)));
-        System.out.println(testBoard.getPiece(new Coord(1,0)).allCapturePos(testBoard));
-        testBoard.getPiece(new Coord(1,0)).setValidMoves(testBoard);
-        System.out.println(testBoard.getPiece(new Coord(1,0)).getValidMoves());
+        Object[] move = new Object[2];
+        move[0] = king;
+        move[1] = new Coord(0,1);
+        Move mTest = Factory.newMove("basic",move);
+        mTest.makeMove(testBoard);
+
+
+
+
+
+        System.out.println(testBoard.getPiece(new Coord(0,1)));
+        System.out.println(testBoard.getPiece(new Coord(0,1)).allCapturePos(testBoard));
+        testBoard.getPiece(new Coord(0,1)).setValidMoves(testBoard);
+        System.out.println(testBoard.getPiece(new Coord(0,1)).getValidMoves());
         System.out.println(testBoard.isCheck(true,null));
+
+        testBoard.printBoard();
 
 
         /*

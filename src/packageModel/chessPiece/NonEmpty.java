@@ -10,11 +10,12 @@ public abstract class NonEmpty implements Piece {
 
     private final boolean white;
     private Coord pos;
-    private int moved = 0;
+    private int moved;
 
     public NonEmpty(boolean white, Coord pos) {
         this.white = white;
         this.pos = pos;
+        moved = 0;
 
     }
 
