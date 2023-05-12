@@ -3,9 +3,9 @@ package packageModel.moveImplementations;
 import packageModel.*;
 
 public class BasicMovement implements Move {
-    private final Piece moving;
-    private final Coord start;
-    private final Coord dest;
+    public final Piece moving;
+    public final Coord start;
+    public final Coord dest;
     public BasicMovement(Piece moving, Coord dest)
     {
         this.moving = moving;

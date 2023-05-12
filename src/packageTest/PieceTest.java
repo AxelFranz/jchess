@@ -41,6 +41,7 @@ public class PieceTest {
         testBoard.printBoard();
 
 
+
         /*
         Piece testQueen = Factory.newPiece(PcId.QUEEN,array);
         testBoard.setPiece(testQueen.getPos(),testQueen);

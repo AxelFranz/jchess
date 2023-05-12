@@ -7,10 +7,10 @@ import packageModel.Piece;
 import packageModel.chessPiece.Empty;
 
 public class CaptureMovement implements Move {
-    private final Piece moving;
-    private final Coord start;
-    private final Coord dest;
-    private final Piece captured;
+    public final Piece moving;
+    public final Coord start;
+    public final Coord dest;
+    public final Piece captured;
     public CaptureMovement(Piece moving, Coord dest, Piece captured) {
         this.moving = moving;
         start = moving.getPos();

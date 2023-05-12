@@ -11,6 +11,7 @@ public class CheckTest {
                 testBoard.setPiece(new Coord(i,j), Factory.newPiece(PcId.EMPTY,null));
             }
         }
+        System.out.println("Test");
         Object[] pcBuild = new Object[2];
         pcBuild[0] = true;
         pcBuild[1] = new Coord(0,0);
@@ -20,6 +21,7 @@ public class CheckTest {
         pcBuild[1] = new Coord(1,7);
         Piece queen = Factory.newPiece(PcId.QUEEN,pcBuild);
         testBoard.setPiece((Coord)pcBuild[1],queen);
+        testBoard.printBoard();
 
         System.out.println(testBoard.getPiece(new Coord(0,0)));
         System.out.println(testBoard.getPiece(new Coord(0,0)).allCapturePos(testBoard));
@@ -28,6 +30,7 @@ public class CheckTest {
         System.out.println(testBoard.isCheck(true,null));
         pcBuild[0] = false;
         pcBuild[1] = new Coord(2,0);
+        testBoard.printBoard();
 
         testBoard.setPiece((Coord)pcBuild[1], Factory.newPiece(PcId.QUEEN,pcBuild));
 
@@ -42,6 +45,7 @@ public class CheckTest {
         testBoard.getPiece(new Coord(1,7)).setValidMoves(testBoard);
         System.out.println(testBoard.getPiece(new Coord(1,7)).getValidMoves());
         System.out.println(testBoard.isCheck(true,null));
+        testBoard.printBoard();
 
 
         Object[] move = new Object[2];
