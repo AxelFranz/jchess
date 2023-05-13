@@ -6,5 +6,7 @@ public interface Move {
     public String toString();
     public Coord getCapturedPos();
 
+    public boolean compareDest(Coord dest);
+
 
 }

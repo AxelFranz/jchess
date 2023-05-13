@@ -33,7 +33,7 @@ public class GameHandler {
     /** ArrayList<Move> selected
      *  all the possible move that can be done by the last selected piece
      */
-    private ArrayList<Move> selected;
+    private MoveList selected;
 
     public void setTurn(int turn){
         this.turn = turn;

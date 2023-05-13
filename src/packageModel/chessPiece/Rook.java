@@ -5,14 +5,14 @@ import packageModel.*;
 import java.util.ArrayList;
 
 public class Rook extends NonEmpty {
-    private ArrayList<Move> availableMoves;
+    private MoveList availableMoves;
     public Rook(boolean white, Coord pos) {
         super(white, pos);
-        availableMoves = new ArrayList<>();
+        availableMoves = new MoveList();
     }
 
     @Override
-    public ArrayList<Move> getValidMoves() {
+    public MoveList getValidMoves() {
         return availableMoves;
     }
 
@@ -43,15 +43,15 @@ public class Rook extends NonEmpty {
         availableMoves = genAll(board);
     }
 
-    public ArrayList<Move> genAll(Board board){
-        ArrayList<Move> res = new ArrayList<>();
+    public MoveList genAll(Board board){
+        MoveList res = new MoveList();
         ArrayList<Coord> direction = new ArrayList<>();
         for(int i = -1 ; i < 2 ; i += 2){
             for(int j = -1 ; j < 2 ; j += 2){
                 direction.add(getPos().addXY((i+j)/2,(i-j)/2));
             }
         }
-        Object builder[] = new Object[4];
+        Object[] builder = new Object[4];
         builder[0] = this;
         Coord start = getPos();
         Coord tmp;

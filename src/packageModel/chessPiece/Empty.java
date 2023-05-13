@@ -39,7 +39,7 @@ public class Empty implements Piece {
     }
 
     @Override
-    public ArrayList<Move> getValidMoves() {
+    public MoveList getValidMoves() {
         return null;
     }
 

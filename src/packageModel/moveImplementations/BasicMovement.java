@@ -3,9 +3,9 @@ package packageModel.moveImplementations;
 import packageModel.*;
 
 public class BasicMovement implements Move {
-    public final Piece moving;
-    public final Coord start;
-    public final Coord dest;
+    private final Piece moving;
+    private final Coord start;
+    private final Coord dest;
     public BasicMovement(Piece moving, Coord dest)
     {
         this.moving = moving;
@@ -38,6 +38,10 @@ public class BasicMovement implements Move {
     @Override
     public Coord getCapturedPos() {
         return null;
+    }
+
+    public boolean compareDest(Coord dest){
+        return dest == this.dest;
     }
 
 }

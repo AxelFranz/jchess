@@ -6,14 +6,14 @@ import java.util.ArrayList;
 
 public class Queen extends NonEmpty{
 
-    private ArrayList<Move> availableMoves;
+    private MoveList availableMoves;
     public Queen(boolean white, Coord pos) {
         super(white, pos);
-        availableMoves = new ArrayList<>();
+        availableMoves = new MoveList();
     }
 
     @Override
-    public ArrayList<Move> getValidMoves() {
+    public MoveList getValidMoves() {
         return availableMoves;
     }
 
@@ -47,10 +47,10 @@ public class Queen extends NonEmpty{
     }
 
 
-    private ArrayList<Move> genAll(Board board){
-        ArrayList<Move> res = new ArrayList<>();
-        Coord direction[] = new Coord[8];
-        Object builder[] = new Object[4];
+    private MoveList genAll(Board board){
+        MoveList res = new MoveList();
+        Coord[] direction = new Coord[8];
+        Object[] builder = new Object[4];
         Coord start = getPos();
         Coord tmp;
         Move toTest;

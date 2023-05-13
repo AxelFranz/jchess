@@ -43,4 +43,8 @@ public class EnPassantMovement implements Move {
     public Coord getCapturedPos() {
         return null;
     }
+
+    public boolean compareDest(Coord dest){
+        return dest == this.dest;
+    }
 }

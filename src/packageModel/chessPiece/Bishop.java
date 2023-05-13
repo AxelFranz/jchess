@@ -6,14 +6,14 @@ import java.util.ArrayList;
 
 public class Bishop extends NonEmpty {
 
-    private ArrayList<Move> availableMoves;
+    private MoveList availableMoves;
     public Bishop(boolean white, Coord pos) {
         super(white, pos);
-        availableMoves = new ArrayList<>();
+        availableMoves = new MoveList();
     }
 
     @Override
-    public ArrayList<Move> getValidMoves() {
+    public MoveList getValidMoves() {
         return availableMoves;
     }
 
@@ -50,15 +50,15 @@ public class Bishop extends NonEmpty {
         return "Bishop";
     }
 
-    private ArrayList<Move> genAll(Board board){
-        ArrayList<Move> res = new ArrayList<>();
+    private MoveList genAll(Board board){
+        MoveList res = new MoveList();
         ArrayList<Coord> direction = new ArrayList<>();
         for(int i = -1 ; i < 2 ; i += 2){
             for(int j = -1 ; j < 2 ; j += 2){
                 direction.add(getPos().addXY(i,j));
             }
         }
-        Object builder[] = new Object[4];
+        Object[] builder = new Object[4];
         builder[0] = this;
         Coord start = getPos();
         Coord tmp;

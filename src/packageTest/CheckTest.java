@@ -62,6 +62,10 @@ public class CheckTest {
         System.out.println(testBoard.getPiece(new Coord(0,1)).allCapturePos(testBoard));
         testBoard.getPiece(new Coord(0,1)).setValidMoves(testBoard);
         System.out.println(testBoard.getPiece(new Coord(0,1)).getValidMoves());
+        System.out.println(testBoard.getPiece(new Coord(1,7)));
+        System.out.println(testBoard.getPiece(new Coord(1,7)).allCapturePos(testBoard));
+        testBoard.getPiece(new Coord(1,7)).setValidMoves(testBoard);
+        System.out.println(testBoard.getPiece(new Coord(1,7)).getValidMoves());
         System.out.println(testBoard.isCheck(true,null));
 
         testBoard.printBoard();

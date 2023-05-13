@@ -6,10 +6,10 @@ import java.util.ArrayList;
 
 public class King extends NonEmpty {
 
-    private ArrayList<Move> availableMoves;
+    private MoveList availableMoves;
     public King(boolean white, Coord pos) {
         super(white, pos);
-        availableMoves = new ArrayList<>();
+        availableMoves = new MoveList();
     }
     @Override
     public boolean isKing(){
@@ -17,7 +17,7 @@ public class King extends NonEmpty {
     }
 
     @Override
-    public ArrayList<Move> getValidMoves() {
+    public MoveList getValidMoves() {
         return availableMoves;
     }
 
@@ -45,9 +45,9 @@ public class King extends NonEmpty {
         return "King";
     }
 
-    private ArrayList<Move> genAll(Board board){
-        ArrayList<Move> res = new ArrayList<>();
-        Object builder[] = new Object[4];
+    private MoveList genAll(Board board){
+        MoveList res = new MoveList();
+        Object[] builder = new Object[4];
         Coord tmp ;
         Move toTest;
         builder[0] = this;

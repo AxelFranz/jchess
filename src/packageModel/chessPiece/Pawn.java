@@ -1,23 +1,20 @@
 package packageModel.chessPiece;
 
-import packageModel.Board;
-import packageModel.Coord;
-import packageModel.Move;
-import packageModel.Factory;
+import packageModel.*;
 
 
 import java.util.ArrayList;
 
 public class Pawn extends NonEmpty {
 
-    private ArrayList<Move> availableMoves;
+    private MoveList availableMoves;
     public Pawn(boolean white, Coord pos) {
         super(white, pos);
-        availableMoves = new ArrayList<>();
+        availableMoves = new MoveList();
     }
 
     @Override
-    public ArrayList<Move> getValidMoves() {
+    public MoveList getValidMoves() {
         return availableMoves;
     }
 
@@ -42,10 +39,10 @@ public class Pawn extends NonEmpty {
         return "Pawn";
     }
 
-    private ArrayList<Move> genBasic(Board board)
+    private MoveList genBasic(Board board)
     {
-        Object moveInput[] = new Object[3];
-        ArrayList<Move> res = new ArrayList<>();
+        Object[] moveInput = new Object[3];
+        MoveList res = new MoveList();
         int dir = (this.isWhite())?(-1):(1);
         Coord tmp = getPos().addY(dir);
         Move toTest;
@@ -66,9 +63,9 @@ public class Pawn extends NonEmpty {
     }
 
 
-    private ArrayList<Move> genCapture(Board board){
-        Object moveInput[]  = new Object[4];
-        ArrayList<Move> res = new ArrayList<>();
+    private MoveList genCapture(Board board){
+        Object[] moveInput = new Object[4];
+        MoveList res = new MoveList();
         Move toTest;
         int dir = (this.isWhite())?(-1):(1);
         int pos[] = {-1,1};

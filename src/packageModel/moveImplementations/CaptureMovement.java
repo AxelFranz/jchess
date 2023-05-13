@@ -41,4 +41,9 @@ public class CaptureMovement implements Move {
     public Coord getCapturedPos() {
         return dest;
     }
+
+    public boolean compareDest(Coord dest){
+        return dest == this.dest;
+    }
+
 }
