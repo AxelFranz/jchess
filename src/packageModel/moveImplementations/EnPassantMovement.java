@@ -38,13 +38,13 @@ public class EnPassantMovement implements Move {
     public String toString(){
         return pawn + " captured En passant " + pawn2 + " : " + start +  " -> " + dest + " passing by " + pos;
     }
-
     @Override
-    public Coord getCapturedPos() {
-        return null;
-    }
-
     public boolean compareDest(Coord dest){
         return dest == this.dest;
+    }
+
+    @Override
+    public MoveId moveType(){
+        return MoveId.ENPASSANT;
     }
 }

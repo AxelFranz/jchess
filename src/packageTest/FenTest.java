@@ -8,10 +8,12 @@ public class FenTest {
         Board board = new Board();
         test.setBoard(board);
         System.out.println(test.toFen());
-        /*
+
         Object[] setup = new Object[2];
-        setupe[0]
-        board.setPiece(new Coord(0,0), Factory.newPiece(PcId.KING,));
-        */
+        setup[0] = true;
+        setup[1] = new Coord(1,1);
+        board.setPiece(new Coord(0,0), Factory.newPiece(PcId.KING,setup));
+        System.out.println(test.toFen());
+
     }
 }

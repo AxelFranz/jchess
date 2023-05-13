@@ -6,6 +6,7 @@ public class BasicMovement implements Move {
     private final Piece moving;
     private final Coord start;
     private final Coord dest;
+
     public BasicMovement(Piece moving, Coord dest)
     {
         this.moving = moving;
@@ -33,15 +34,14 @@ public class BasicMovement implements Move {
     {
         return moving + " : " + start + " -> " + dest;
     }
-
-
     @Override
-    public Coord getCapturedPos() {
-        return null;
-    }
-
     public boolean compareDest(Coord dest){
         return dest == this.dest;
+    }
+
+    @Override
+    public MoveId moveType(){
+        return MoveId.BASIC;
     }
 
 }

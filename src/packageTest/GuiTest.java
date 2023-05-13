@@ -1,6 +1,8 @@
+/*
 package packageTest;
 
 import javafx.application.Application;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -10,7 +12,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
-import javafx.scene.Group;
 
 public class GuiTest extends Application {
 
@@ -54,3 +55,4 @@ public class GuiTest extends Application {
         stage.show();
     }
 }
+*/

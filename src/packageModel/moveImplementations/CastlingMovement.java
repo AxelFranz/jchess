@@ -42,13 +42,13 @@ public class CastlingMovement implements Move {
     public String toString(){
         return king + " castled with" + rook + " : " + king + " " + start +  " -> " + dest + " " + rook + " " + rStart + " " + rDest;
     }
-
     @Override
-    public Coord getCapturedPos() {
-        return null;
-    }
-
     public boolean compareDest(Coord dest){
         return dest == this.dest;
+    }
+
+    @Override
+    public MoveId moveType(){
+        return MoveId.CASTLING;
     }
 }

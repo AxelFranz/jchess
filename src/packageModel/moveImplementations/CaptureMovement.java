@@ -1,9 +1,6 @@
 package packageModel.moveImplementations;
 
-import packageModel.Board;
-import packageModel.Coord;
-import packageModel.Move;
-import packageModel.Piece;
+import packageModel.*;
 import packageModel.chessPiece.Empty;
 
 public class CaptureMovement implements Move {
@@ -36,14 +33,14 @@ public class CaptureMovement implements Move {
     public String toString(){
         return moving + " captured " + captured + " : " + start +  " -> " + dest;
     }
-
     @Override
-    public Coord getCapturedPos() {
-        return dest;
-    }
-
     public boolean compareDest(Coord dest){
         return dest == this.dest;
+    }
+
+    @Override
+    public MoveId moveType(){
+        return MoveId.CAPTURE;
     }
 
 }

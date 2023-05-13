@@ -5,6 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ee3490b5-a15d-4b26-a220-7b874758dc6c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/packageModel/MoveId.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/packageModel/GameHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/packageModel/GameHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/packageModel/Move.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/packageModel/Move.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/packageModel/moveImplementations/BasicMovement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/packageModel/moveImplementations/BasicMovement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/packageModel/moveImplementations/CaptureMovement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/packageModel/moveImplementations/CaptureMovement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/packageModel/moveImplementations/CastlingMovement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/packageModel/moveImplementations/CastlingMovement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/packageModel/moveImplementations/EnPassantMovement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/packageModel/moveImplementations/EnPassantMovement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/packageTest/FenTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/packageTest/FenTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/packageTest/GuiTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/packageTest/GuiTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,10 +28,11 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="Class" />
         <option value="FxmlFile" />
         <option value="JavaFXApplication" />
+        <option value="AnnotationType" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -45,31 +57,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/axel/IdeaProjects/jchess/javafx/lib",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.JavaFX",
-    "settings.editor.splitter.proportion": "0.22916667",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/axel/IdeaProjects/jchess/javafx/lib&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;,
+    &quot;settings.editor.splitter.proportion&quot;: &quot;0.22916667&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/packageTest" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.GuiTest">
+  <component name="RunManager">
     <configuration name="BoardTest" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="packageTest.BoardTest" />
       <module name="jchess" />
@@ -96,7 +108,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GuiTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="GuiTest" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="packageTest.GuiTest" />
       <module name="jchess" />
       <option name="VM_PARAMETERS" value=" --module-path $PROJECT_DIR$/javafx/lib --add-modules javafx.controls,javafx.fxml" />
@@ -112,12 +124,11 @@
     </configuration>
     <list>
       <item itemvalue="Application.BoardTest" />
-      <item itemvalue="Application.FXMLTest" />
       <item itemvalue="Application.GuiTest" />
+      <item itemvalue="Application.FXMLTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.GuiTest" />
         <item itemvalue="Application.FXMLTest" />
       </list>
     </recent_temporary>

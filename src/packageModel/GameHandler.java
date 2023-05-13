@@ -10,7 +10,6 @@ public class GameHandler {
     private Board game;
 
     /** int turn
-     * 0 if no player should play
      * -1 for black turn
      * 1 fo white turn
      */
@@ -31,17 +30,21 @@ public class GameHandler {
      *  4 game mode win: game ended with the player in turn losing due to special game modes rules
      */
     private int gameState;
-    /** ArrayList<Move> selected
+    /** MoveList selected
      *  all the possible move that can be done by the last selected piece
      */
     private MoveList selected;
-    /** private int HalfMoveClock;
+    /** private int HalfMoveClock
      * every time a move other than a pawn moving or a capture occur this variable is incremented
      */
     private int HalfMoveClock = 0;
-
+    /** private int fullMoveCount = 0
+     *  every time black side play this variable is incremented
+     */
     private int fullMoveCount = 0;
-
+    /** private Coord enPassant = null
+     *  coord where a pawn who can En Passant would end after doing so, if no En Passant are possible null
+     */
     private Coord enPassant = null;
 
 
@@ -63,7 +66,7 @@ public class GameHandler {
 
     public void setSelected(Coord pos){
         selected.clear();
-        selected = (MoveList) game.getPiece(pos).getValidMoves().clone();
+        selected = game.getPiece(pos).getValidMoves();
     }
 
     public void changeTurn() {
@@ -73,9 +76,11 @@ public class GameHandler {
     public String toFen(){
         StringBuilder fenCode = new StringBuilder(128);
         int count = 0;
+        Piece tmp;
+        boolean isSet = false;
         for(int y = 0 ; y < 8 ; y ++){
             for(int x = 0 ; x < 8 ; x++){
-                Piece tmp = game.getPiece(x,y);
+                tmp = game.getPiece(x,y);
                 if(tmp.isEmpty())
                 {
                     count++;
@@ -95,9 +100,54 @@ public class GameHandler {
                 fenCode.append('/');
             }
         }
+        fenCode.append(' ');
+        if(turn == -1){
+            fenCode.append('b');
+        } else {
+            fenCode.append('w');
+        }
+        count = allCastles();
+        if(count != 0){
+            if((count & 1) == 1 )
+                fenCode.append('K');
+            if((count & 2) == 2)
+                fenCode.append('Q');
+            if((count & 4) == 4)
+                fenCode.append('k');
+            if((count & 8) == 8)
+                fenCode.append('q');
+        }
+
         return fenCode.toString();
     }
 
+    private int allCastles(){
+        int ret = 0;
+        Piece tmp;
+        tmp = game.getPiece(4,7);
+        if(tmp.isKing() && tmp.neverMoved()){
+            tmp = game.getPiece(7,7);
+            if(tmp.code()=='R' && tmp.neverMoved()){
+                ret = ret | 1;
+            }
+            tmp = game.getPiece(0,7);
+            if(tmp.code()=='R' && tmp.neverMoved()){
+                ret = ret | 2;
+            }
+        }
+        tmp = game.getPiece(4,7);
+        if(tmp.isKing() && tmp.neverMoved()){
+            tmp = game.getPiece(7,7);
+            if(tmp.code()=='R' && tmp.neverMoved()){
+                ret = ret | 4;
+            }
+            tmp = game.getPiece(0,7);
+            if(tmp.code()=='R' && tmp.neverMoved()){
+                ret = ret | 8;
+            }
+        }
+        return ret;
+    }
 
 
 
