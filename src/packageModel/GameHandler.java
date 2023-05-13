@@ -37,11 +37,11 @@ public class GameHandler {
     /** private int HalfMoveClock
      * every time a move other than a pawn moving or a capture occur this variable is incremented
      */
-    private int HalfMoveClock = 0;
+    private int halfMoveClock = 0;
     /** private int fullMoveCount = 0
      *  every time black side play this variable is incremented
      */
-    private int fullMoveCount = 0;
+    private int fullMoveCount = 1;
     /** private Coord enPassant = null
      *  coord where a pawn who can En Passant would end after doing so, if no En Passant are possible null
      */
@@ -116,9 +116,15 @@ public class GameHandler {
                 fenCode.append('k');
             if((count & 8) == 8)
                 fenCode.append('q');
+        } else {
+            fenCode.append('-');
         }
-
+        fenCode.append(" " + enPassant + " " + halfMoveClock + " " + fullMoveCount );
         return fenCode.toString();
+    }
+
+    public void loadFen(String fen){
+
     }
 
     private int allCastles(){

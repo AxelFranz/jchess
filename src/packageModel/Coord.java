@@ -21,7 +21,7 @@ public record Coord(int x, int y) {
 
     /* return a String corresponding to the coordinates used in chess */
     public String toString() {
-        char row = (char) (65 + x);
+        char row = (char) (97 + x);
         return "" + row + (8 - y);
     }
 
