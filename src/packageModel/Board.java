@@ -6,14 +6,15 @@ import java.util.ArrayList;
 
 public class Board {
     private Piece[][] board;
-    private MoveStack history;
-    public Board(Piece[][] board, MoveStack history) {
+    private MoveHistory history;
+
+    public Board(Piece[][] board, MoveHistory history) {
         this.board = board;
         this.history = history;
     }
 
     public Board() {
-        this(Factory.newBoard(8,8), new MoveStack());
+        this(Factory.newBoard(8,8), new MoveHistory());
     }
     public Piece getPiece(Coord pos) {
         return board[pos.x()][pos.y()];
@@ -24,6 +25,14 @@ public class Board {
     public void setPiece(Coord pos, Piece pc) {
         board[pos.x()][pos.y()] = pc;
         pc.setPos(pos);
+    }
+
+    public void genAllMoves(){
+        for(int y = 0 ; y < 8 ; y++){
+            for(int x = 0 ; x < 8 ; x++){
+                board[x][y].setValidMoves(this);
+            }
+        }
     }
 
     public boolean isCheck(boolean white, Move test) {
@@ -120,6 +129,16 @@ public class Board {
             System.out.println();
         }
         System.out.println("_________________");
+    }
+    public void addHistory(Move x){
+        history.addMove(x);
+    }
+
+    public void popHistory(){
+        history.popMove();
+    }
+    public MoveHistory getHistory(){
+        return history;
     }
 
 }

@@ -42,5 +42,9 @@ public class CaptureMovement implements Move {
     public MoveId moveType(){
         return MoveId.CAPTURE;
     }
+    @Override
+    public Coord getDest(){
+        return dest;
+    }
 
 }

@@ -6,6 +6,5 @@ public interface Move {
     public String toString();
     public boolean compareDest(Coord dest);
     public MoveId moveType();
-
-
+    public Coord getDest();
 }

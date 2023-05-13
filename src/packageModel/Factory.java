@@ -57,8 +57,61 @@ public class Factory {
             return null; /* exception */
 
     }
-    /*
-    public static void initBoard(Board )
-    */
+
+    private static PcId codeToPcId (char code){
+        switch(code){
+            case 'P':
+                return PcId.PAWN;
+            case 'R':
+                return PcId.ROOK;
+            case 'N':
+                return PcId.KNIGHT;
+            case 'B':
+                return PcId.BISHOP;
+            case 'Q':
+                return PcId.QUEEN;
+            case 'K':
+                return PcId.KING;
+            default:
+                return PcId.EMPTY;
+        }
+    }
+
+    public static int initBoard(GameHandler handler,String fen){
+        Piece[][] tab = new Piece[8][8];
+        int index = 0, eos = fen.length();
+        char buf;
+        int nbEmpty;
+        int pos;
+        Object[] init = new Object[2];
+        PcId id;
+        while(index < eos){
+            buf = fen.charAt(index++);
+            pos = 0;
+            while(buf != ' '){
+                if(buf >= '1' && buf <= '8'){
+                    nbEmpty = buf-'0';
+                    for(int i = 0; i < nbEmpty; i++){
+                        tab[pos%8][pos/8] = newPiece(PcId.EMPTY,null);
+                        pos++;
+                    }
+                } else if((buf >= 'a' && buf <= 'z') ||(buf >= 'A' && buf <= 'Z')) {
+                    init[1] = new Coord(pos%8,pos/8);
+                    init[0] = true;
+                    if(buf >= 'a'){
+                        init[0] = (Boolean) false;
+                        buf = Character.toUpperCase(buf);
+                    }
+                    id = codeToPcId(buf);
+                    Factory.newPiece(id,init);
+                }
+                buf = fen.charAt(index++);
+            }
+        }
+        Board newBoard = new Board(tab,new MoveHistory());
+        handler.setBoard(newBoard);
+        return index;
+    }
+
 
 }

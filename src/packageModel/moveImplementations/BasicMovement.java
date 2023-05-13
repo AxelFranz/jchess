@@ -44,4 +44,9 @@ public class BasicMovement implements Move {
         return MoveId.BASIC;
     }
 
+    @Override
+    public Coord getDest(){
+        return dest;
+    }
+
 }

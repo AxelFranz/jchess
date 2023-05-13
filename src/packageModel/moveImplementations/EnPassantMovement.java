@@ -47,4 +47,8 @@ public class EnPassantMovement implements Move {
     public MoveId moveType(){
         return MoveId.ENPASSANT;
     }
+    @Override
+    public Coord getDest(){
+        return dest;
+    }
 }

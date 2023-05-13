@@ -51,4 +51,8 @@ public class CastlingMovement implements Move {
     public MoveId moveType(){
         return MoveId.CASTLING;
     }
+    @Override
+    public Coord getDest(){
+        return dest;
+    }
 }

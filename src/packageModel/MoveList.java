@@ -11,5 +11,12 @@ public class MoveList extends ArrayList<Move> {
         }
         return null;
     }
+    public ArrayList<Coord> getAllDest(){
+        ArrayList<Coord> ret = new ArrayList<Coord>();
+        for(Move parc: this){
+            ret.add(parc.getDest());
+        }
+        return ret;
+    }
 
 }

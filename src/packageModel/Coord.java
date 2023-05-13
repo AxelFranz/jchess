@@ -3,6 +3,7 @@ package packageModel;
 import java.util.ArrayList;
 
 public record Coord(int x, int y) {
+
     public static Coord addCoord(Coord pos1, Coord pos2) {
         return new Coord(pos1.x + pos2.x, pos1.y + pos2.y);
     }
@@ -37,5 +38,12 @@ public record Coord(int x, int y) {
         }
         return false;
     }
+
+    public static Coord stringToCoord(String toCoord){
+        char x = toCoord.charAt(0);
+        char y = toCoord.charAt(1);
+        return new Coord(x-'a',7-(y-'1'));
+    }
+
 
 }
