@@ -13,6 +13,11 @@ public class BasicMovement implements Move {
         start = Coord.addCoord(moving.getPos(), new Coord(0,0));
         this.dest = dest;
     }
+    public BasicMovement(Piece moving, Coord dest,Coord start){
+        this.moving = moving;
+        this.start = start;
+        this.dest = dest;
+    }
     @Override
     public void undoMove(Board board) {
         Piece empty = Factory.newPiece(PcId.EMPTY,null);
@@ -49,4 +54,8 @@ public class BasicMovement implements Move {
         return dest;
     }
 
+    @Override
+    public Piece getPiece() {
+        return moving;
+    }
 }

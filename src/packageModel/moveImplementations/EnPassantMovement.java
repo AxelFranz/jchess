@@ -51,4 +51,9 @@ public class EnPassantMovement implements Move {
     public Coord getDest(){
         return dest;
     }
+
+    @Override
+    public Piece getPiece() {
+        return pawn;
+    }
 }

@@ -7,4 +7,5 @@ public interface Move {
     public boolean compareDest(Coord dest);
     public MoveId moveType();
     public Coord getDest();
+    public Piece getPiece();
 }

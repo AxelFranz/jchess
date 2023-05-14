@@ -46,5 +46,9 @@ public class CaptureMovement implements Move {
     public Coord getDest(){
         return dest;
     }
+    @Override
+    public Piece getPiece() {
+        return moving;
+    }
 
 }

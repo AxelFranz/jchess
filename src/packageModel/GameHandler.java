@@ -1,5 +1,7 @@
 package packageModel;
 
+import packageModel.moveImplementations.BasicMovement;
+
 import java.util.ArrayList;
 
 public class GameHandler {
@@ -117,19 +119,35 @@ public class GameHandler {
         Move temp = selected.getValidMoves().getByDest(dest);
         temp.makeMove(game);
         game.addHistory(temp);
+        switch(temp.moveType()){
+            case ENPASSANT:
+                enPassant = temp.getDest().addY(turn);
+                halfMoveClock++;
+                break;
+            case CAPTURE:
+                halfMoveClock = 0;
+                break;
+            case BASIC:
+                char test = temp.getPiece().code();
+                if(test == 'P' || test == 'p')
+                    halfMoveClock = 0;
+                else
+                    halfMoveClock++;
+                break;
+            default:
+                halfMoveClock++;
+                enPassant = null;
+        }
+
+        if(turn == -1)
+            fullMoveCount++;
+
         changeTurn();
         selected = null;
         game.genAllMoves();
         boolean isCheck = game.isCheck(turn == 1);
         boolean hasValidMoves = game.hasLegalMoves(turn == 1);
-        /*
-        if(gamemode != 0){
-            switch (gamemode){
-                case 1:
-                    kothCondition();
-            }
-        }
-        */
+
         if(isCheck && !hasValidMoves)
             gameState = 3;
         else if(!isCheck && !hasValidMoves)
@@ -139,7 +157,29 @@ public class GameHandler {
         else
             gameState = 0;
 
+        if(gamemode != 0){
+            if (gamemode == 1) {
+                if (kothCondition())
+                    gameState = 4;
+            }
+        }
 
+
+
+
+    }
+    private boolean kothCondition(){
+        Coord[] center = new Coord[4];
+        center[0] = new Coord(3,3);
+        center[1] = new Coord(3,4);
+        center[2] = new Coord(4,3);
+        center[3] = new Coord(4,4);
+        for( Coord pos : center){
+            Piece tmp = game.getPiece(pos);
+            if(tmp.isKing() && (tmp.isWhite() != (turn == 1)) )
+                return true;
+        }
+        return false;
     }
 
     /** public String toFen()
@@ -165,6 +205,7 @@ public class GameHandler {
                     fenCode.append(tmp.code());
                 }
             }
+
             if(count != 0) {
                 fenCode.append(count);
                 count = 0;
@@ -179,6 +220,7 @@ public class GameHandler {
         } else {
             fenCode.append('w');
         }
+        fenCode.append(' ');
         count = allCastles();
         if(count != 0){
             if((count & 1) == 1 )
@@ -192,7 +234,13 @@ public class GameHandler {
         } else {
             fenCode.append('-');
         }
-        fenCode.append(" " + enPassant + " " + halfMoveClock + " " + fullMoveCount );
+        fenCode.append(' ');
+        if(enPassant == null)
+            fenCode.append('-');
+        else
+            fenCode.append(enPassant);
+        fenCode.append(' ');
+        fenCode.append(halfMoveClock).append(' ').append(fullMoveCount);
         return fenCode.toString();
     }
 
@@ -244,52 +292,35 @@ public class GameHandler {
             tmp = game.getPiece(7,0).code();
             if( tmp == 'r')
                 game.getPiece(7,0).incrementMoved();
-            index ++;
         }
+        if(buf == '-')
+            index ++;
 
         buf = fen.charAt(index++);
         if(buf != '-'){
-            char y = fen.charAt(index++);
-            if(y == '6'){
-                Coord dest = new Coord(buf-'a',3);
-                Coord dep = new Coord(buf-'a',1);
-                Object[] init = new Object[2];
-                Piece toMove = game.getPiece(dest);
-                Piece save =  game.getPiece(dep);
-                game.setPiece(dep,toMove);
-                init[1] = dest;
-                Move toAdd = Factory.newMove("basic",init);
-                game.addHistory(toAdd);
-                game.setPiece(dest,toMove);
-                game.setPiece(dep,save);
-            }
-            if( y == '3'){
-                Coord dest = new Coord(buf-'a',4);
-                Coord dep = new Coord(buf-'a',6);
-                Object[] init = new Object[2];
-                Piece toMove = game.getPiece(dest);
-                Piece save =  game.getPiece(dep);
-                game.setPiece(dep,toMove);
-                init[1] = dest;
-                Move toAdd = Factory.newMove("basic",init);
-                game.addHistory(toAdd);
-                game.setPiece(dest,toMove);
-                game.setPiece(dep,save);
-            }
+            char yChar = fen.charAt(index++);
+            int dir = 1;
+            if(turn == -1)
+                dir = -1;
+            int y = '8'-yChar;
+            Coord dest = new Coord(buf-'a',y+dir);
+            Coord dep = new Coord(buf-'a',y-dir);
+            Move passant = new BasicMovement(game.getPiece(dest),dest,dep);
+            game.addHistory(passant);
         }
         index++;
-        String nb = "";
+        StringBuilder nb = new StringBuilder(8);
         buf = fen.charAt(index++);
         while(buf != ' '){
-            nb = nb +buf;
+            nb.append(buf);
             buf = fen.charAt(index++);
         }
-        halfMoveClock = Integer.parseInt(nb);
-        nb = "";
+        halfMoveClock = Integer.parseInt(nb.toString());
+        nb = new StringBuilder(8);
         for(int i = index; i < len; i++){
-            nb = nb + fen.charAt(i);
+            nb.append(fen.charAt(i));
         }
-        fullMoveCount = Integer.parseInt(nb);
+        fullMoveCount = Integer.parseInt(nb.toString());
     }
 
     /** private int allCastles()
@@ -300,7 +331,7 @@ public class GameHandler {
         int ret = 0;
         Piece tmp;
         tmp = game.getPiece(4,7);
-        if(tmp.isKing() && tmp.neverMoved()){
+        if(tmp.isKing() && tmp.isWhite() && tmp.neverMoved()){
             tmp = game.getPiece(7,7);
             if(tmp.code()=='R' && tmp.neverMoved()){
                 ret = ret | 1;
@@ -311,13 +342,13 @@ public class GameHandler {
             }
         }
         tmp = game.getPiece(4,0);
-        if(tmp.isKing() && tmp.neverMoved()){
+        if(tmp.isKing() && tmp.isBlack() && tmp.neverMoved()){
             tmp = game.getPiece(7,0);
-            if(tmp.code()=='R' && tmp.neverMoved()){
+            if(tmp.code()=='r' && tmp.neverMoved()){
                 ret = ret | 4;
             }
             tmp = game.getPiece(0,0);
-            if(tmp.code()=='R' && tmp.neverMoved()){
+            if(tmp.code()=='r' && tmp.neverMoved()){
                 ret = ret | 8;
             }
         }
@@ -386,7 +417,7 @@ public class GameHandler {
                 return false;
             }
             buf = fen.charAt(index++);
-            if(buf <'1' || buf > '8' || index >= length)
+            if((buf != '3' && buf != '6') || index >= length)
                 return false;
         }
         buf = fen.charAt(index++);
@@ -407,7 +438,9 @@ public class GameHandler {
         }
         return buf >= '0' && buf <= '9';
     }
-
+    public Board getGame(){
+        return game;
+    }
 
 
 }

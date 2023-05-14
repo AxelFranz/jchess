@@ -55,4 +55,9 @@ public class CastlingMovement implements Move {
     public Coord getDest(){
         return dest;
     }
+
+    @Override
+    public Piece getPiece() {
+        return king;
+    }
 }
