@@ -9,8 +9,8 @@ public class Rook extends NonEmpty {
     public Rook(boolean white, Coord pos) {
         super(white, pos);
         availableMoves = new MoveList();
-        if(white) this.imgPath = "chessImage/white_rook.png";
-        else this.imgPath = "chessImage/black_rook.png";
+        if(white) this.imgPath = "/chessImage/white_rook.png";
+        else this.imgPath = "/chessImage/black_rook.png";
     }
 
     @Override

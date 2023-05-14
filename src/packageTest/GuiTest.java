@@ -1,4 +1,3 @@
-/*
 package packageTest;
 
 import javafx.application.Application;
@@ -47,12 +46,8 @@ public class GuiTest extends Application {
         Group root = new Group();
         Scene scene = new Scene(root,800,600, Color.WHITE);
 
-        test1(stage,root);
-
-
         stage.setTitle("JChess");
         stage.setScene(scene);
         stage.show();
     }
 }
-*/
