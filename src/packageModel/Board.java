@@ -140,5 +140,8 @@ public class Board {
     public MoveHistory getHistory(){
         return history;
     }
+    public Move getLastHistory(){
+        return history.get(history.size()-1);
+    }
 
 }

@@ -11,6 +11,8 @@ import java.util.Objects;
 
 public class Factory {
 
+    public String defaultFen = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
+    public String fairyFen = "";
     public static Piece newPiece(PcId id, Object array[])
     {
         /* handle cases were id != PcId.EMPTY && array.length != 2 with exception or by returning empty by default */
@@ -44,14 +46,14 @@ public class Factory {
         return board;
     }
 
-    public static Move newMove(String moveType, Object[] array) {
-        if (Objects.equals(moveType, "basic") && array.length >= 2) {
+    public static Move newMove(MoveId moveType, Object[] array) {
+        if (moveType == MoveId.BASIC && array.length >= 2) {
             return new BasicMovement((Piece) array[0], (Coord) array[1]);
-        } else if (Objects.equals(moveType, "capture") && array.length >= 3) {
+        } else if (moveType == MoveId.CAPTURE && array.length >= 3) {
             return new CaptureMovement((Piece) array[0], (Coord) array[1], (Piece) array[2]);
-        } else if(Objects.equals(moveType,"en passant")){
+        } else if(moveType == MoveId.ENPASSANT){
             return new EnPassantMovement((Piece) array[0],(Coord) array[1], (Piece) array[2]);
-        }else if (Objects.equals(moveType,"castling") && array.length >= 4){
+        }else if (moveType == MoveId.CASTLING && array.length >= 4){
             return new CastlingMovement((Piece) array[0], (Coord) array[1], (Piece) array[2],(Coord) array[3] );
         }else
             return null; /* exception */

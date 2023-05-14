@@ -51,7 +51,7 @@ public class CheckTest {
         Object[] move = new Object[2];
         move[0] = king;
         move[1] = new Coord(0,1);
-        Move mTest = Factory.newMove("basic",move);
+        Move mTest = Factory.newMove(MoveId.BASIC,move);
         mTest.makeMove(testBoard);
 
 

@@ -69,7 +69,7 @@ public class Queen extends NonEmpty{
 
             while(board.canMove(tmp)){
                 builder[1] = tmp;
-                toTest = Factory.newMove("basic",builder);
+                toTest = Factory.newMove(MoveId.BASIC,builder);
                 if(!board.isCheck(isWhite(),toTest))
                     res.add(toTest);
                 tmp = Coord.addCoord(tmp,dir);
@@ -79,7 +79,7 @@ public class Queen extends NonEmpty{
 
                 builder[1] = tmp;
                 builder[2] =  board.getPiece(tmp);
-                toTest = Factory.newMove("capture",builder);
+                toTest = Factory.newMove(MoveId.CAPTURE,builder);
                 if(!board.isCheck(isWhite(),toTest))
                     res.add(toTest);
             }

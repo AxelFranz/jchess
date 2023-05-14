@@ -52,13 +52,13 @@ public class Knight extends NonEmpty{
                 for(Coord tmp: z){
                     if(board.canMove(tmp)){
                         builder[1] = tmp;
-                        toTest = Factory.newMove("basic",builder);
+                        toTest = Factory.newMove(MoveId.BASIC,builder);
                         if(!board.isCheck(isWhite(),toTest))
                             res.add(toTest);
                     }else if(board.canCapture(this,tmp)){
                         builder[1] = tmp;
                         builder[2] =  board.getPiece(tmp);
-                        toTest = Factory.newMove("capture",builder);
+                        toTest = Factory.newMove(MoveId.CAPTURE,builder);
                         if(!board.isCheck(isWhite(),toTest))
                             res.add(toTest);
                     }
