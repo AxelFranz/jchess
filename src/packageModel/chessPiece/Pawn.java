@@ -12,7 +12,7 @@ public class Pawn extends NonEmpty {
         super(white, pos);
         availableMoves = new MoveList();
         if(white) this.imgPath = "/chessImage/white_pawn.png";
-        else this.imgPath = "/chessImage/white_pawn.png";
+        else this.imgPath = "/chessImage/black_pawn.png";
     }
 
     @Override
