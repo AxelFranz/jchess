@@ -109,6 +109,7 @@ public class GameHandler {
 
     /** public void play(Coord dest)
      * make the movement that put the selected piece in the coordinates given in argument
+     * and update all variables to fit the new state of the game
      * @param dest the coordinates in which the player ask to move the selected piece
      */
     public void play(Coord dest){
@@ -163,11 +164,12 @@ public class GameHandler {
                     gameState = 4;
             }
         }
-
-
-
-
     }
+
+    /** private boolean kothCondition()
+     * check if the special winning conditions for the King of The Hill are verified
+     * @return a boolean,true if the side who played the last move won false either
+     */
     private boolean kothCondition(){
         Coord[] center = new Coord[4];
         center[0] = new Coord(3,3);
