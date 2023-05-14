@@ -1,25 +1,33 @@
 package packageView;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
-import packageModel.Board;
-import packageModel.Coord;
-import packageModel.GameHandler;
-import packageModel.Piece;
+import packageModel.*;
 import packageModel.chessPiece.NonEmpty;
 
 public class BoardView extends Application {
+
+    @FXML
+    private TextField fenNormal;
+    @FXML
+    private TextField fenMagic;
+    @FXML
+    private AnchorPane parent;
 
     private final int WINDOW_WIDTH = 800;
 
@@ -34,7 +42,12 @@ public class BoardView extends Application {
 
     private Scene scene;
 
-    public static void main(String[] args) {
+    private GameHandler handler = new GameHandler();
+
+    private Group grid = new Group();
+
+
+    public static void main(String[] args) throws Exception{
         launch(args);
     }
 
@@ -70,46 +83,106 @@ public class BoardView extends Application {
 
     }
 
-    private void printGrid(Group gridView, Board board){
-        emptyGrid(gridView);
+    private void printGrid(){
+        emptyGrid(grid);
 
         for(int i = 0; i < 8; i++){
             for (int j = 0; j < 8; j++) {
-                Piece aff = board.getPiece(i,j);
+                Piece aff = handler.getGame().getPiece(i,j);
                 if(aff.isEmpty()) continue;
                 NonEmpty piece = (NonEmpty) aff;
-                try {
-                    Image img = new Image(piece.getImgPath(), 100, 100, false, false);
-                    ImageView imgView = new ImageView(img);
-                    imgView.setX(i * ROW_WIDTH);
-                    imgView.setY(j * ROW_HEIGHT);
-
-                    gridView.getChildren().add(imgView);
-                } catch (Exception e){
-                    e.printStackTrace();
-                }
+                Image img = new Image(piece.getImgPath(), 100, 100, false, false);
+                ImageView imgView = new ImageView(img);
+                imgView.setX(i * ROW_WIDTH);
+                imgView.setY(j * ROW_HEIGHT);
+                    grid.getChildren().add(imgView);
             }
         }
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        stage = primaryStage;
-        Group grid = new Group();
+        // Initialisation
         Parent menu = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
         scene = new Scene(menu,WINDOW_WIDTH,WINDOW_WIDTH, Color.WHITE);
-        Board board = new Board();
-        GameHandler gh = new GameHandler();
 
-        scene.setRoot(grid);
-
-        gh.setBoard(board);
-        gh.loadFen(fenStart);
-        gh.getGame().printBoard();
-        printGrid(grid,gh.getGame());
+        // Display the menu
+        stage = primaryStage;
 
         stage.setTitle("JChess");
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
+    }
+
+    private Coord getMouseCoord(MouseEvent mouseEvent){
+        return new Coord((int)mouseEvent.getX()/ROW_WIDTH,(int)mouseEvent.getY()/ROW_HEIGHT);
+    }
+
+    private void colorPossibleMoves(Coord click){
+        printGrid();
+        handler.getGame().genAllMoves();
+        MoveList list = handler.getGame().getPiece(click).getValidMoves();
+        list.getAllDest().forEach( tile -> {
+            Rectangle rect = new Rectangle(
+                    tile.x() * ROW_WIDTH,
+                    tile.y() * ROW_HEIGHT,
+                    ROW_WIDTH,
+                    ROW_HEIGHT
+                    );
+            rect.setFill(Color.ORANGE);
+            rect.setOpacity(0.3);
+            grid.getChildren().add(rect);
+        });
+
+    }
+    private void loadGame(Node e){
+        printGrid();
+        stage = (Stage)e.getScene().getWindow();
+        scene = new Scene(grid);
+        scene.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+
+                Coord click = getMouseCoord(mouseEvent);
+                colorPossibleMoves(click);
+            }
+        });
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    private boolean changeToGame(ActionEvent e,String fen){
+        if(!GameHandler.fenChecker(fen)){
+            return false;
+        }
+        handler.loadFen(fen);
+        loadGame((Node)e.getSource());
+        return true;
+    }
+
+    public void changeMenuToNormal(ActionEvent e){
+        handler.setGamemode(0);
+        changeToGame(e,fenStart);
+    }
+
+    public void changeMenuToNormalFEN(ActionEvent e){
+        handler.setGamemode(0);
+        String fen = fenNormal.getText();
+        if(!changeToGame(e,fen)){
+            fenNormal.setText("");
+        }
+    }
+
+    public void changeMenuToMagic(ActionEvent e){
+        System.out.println("Magic");
+    }
+
+    public void changeMenuToMagicFEN(ActionEvent e){
+        System.out.println("MagicFEN");
+    }
+
+    public void changeMenuToKOTH(ActionEvent e){
+        System.out.println("KOTH");
     }
 }
