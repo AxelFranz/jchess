@@ -2,6 +2,8 @@ package packageModel.moveImplementations;
 
 import packageModel.*;
 
+import java.util.Objects;
+
 public class BasicMovement implements Move {
     private final Piece moving;
     private final Coord start;
@@ -57,5 +59,15 @@ public class BasicMovement implements Move {
     @Override
     public Piece getPiece() {
         return moving;
+    }
+    public Coord canEnPassant(){
+        if(moving.name().equalsIgnoreCase("Pawn")){
+            int dir = 1;
+            if(moving.isWhite())
+                dir = -1;
+            if( (start.x() == dest.x()) && (start.y() + 2*dir) == dest.y())
+                return start.addY(dir);
+        }
+        return null;
     }
 }

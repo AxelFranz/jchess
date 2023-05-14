@@ -44,7 +44,7 @@ public class Factory {
         return board;
     }
 
-    public static Move newMove(String moveType, Object array[]) {
+    public static Move newMove(String moveType, Object[] array) {
         if (Objects.equals(moveType, "basic") && array.length >= 2) {
             return new BasicMovement((Piece) array[0], (Coord) array[1]);
         } else if (Objects.equals(moveType, "capture") && array.length >= 3) {

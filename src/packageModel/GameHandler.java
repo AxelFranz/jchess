@@ -120,24 +120,21 @@ public class GameHandler {
         Move temp = selected.getValidMoves().getByDest(dest);
         temp.makeMove(game);
         game.addHistory(temp);
+
+        enPassant = null;
         switch(temp.moveType()){
-            case ENPASSANT:
-                enPassant = temp.getDest().addY(turn);
-                halfMoveClock++;
-                break;
             case CAPTURE:
                 halfMoveClock = 0;
                 break;
             case BASIC:
-                char test = temp.getPiece().code();
-                if(test == 'P' || test == 'p')
-                    halfMoveClock = 0;
-                else
-                    halfMoveClock++;
+                BasicMovement quaso = (BasicMovement) temp;
+                enPassant = quaso.canEnPassant();
+                halfMoveClock++;
+                if(temp.getPiece().name().equals("Pawn"))
+                    halfMoveClock= 0;
                 break;
             default:
                 halfMoveClock++;
-                enPassant = null;
         }
 
         if(turn == -1)

@@ -39,11 +39,6 @@ public record Coord(int x, int y) {
         return false;
     }
 
-    public static Coord stringToCoord(String toCoord){
-        char x = toCoord.charAt(0);
-        char y = toCoord.charAt(1);
-        return new Coord(x-'a',7-(y-'1'));
-    }
 
 
 }
