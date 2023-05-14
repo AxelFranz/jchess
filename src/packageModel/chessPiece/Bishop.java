@@ -10,6 +10,9 @@ public class Bishop extends NonEmpty {
     public Bishop(boolean white, Coord pos) {
         super(white, pos);
         availableMoves = new MoveList();
+        if(white) this.imgPath = "chessImage/white_bishop.png";
+        else this.imgPath = "chessImage/black_bishop.png";
+
     }
 
     @Override

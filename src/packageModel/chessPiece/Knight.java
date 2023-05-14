@@ -11,6 +11,8 @@ public class Knight extends NonEmpty{
     public Knight(boolean white, Coord pos) {
         super(white, pos);
         availableMoves = new MoveList();
+        if(white) this.imgPath = "chessImage/white_knight.png";
+        else this.imgPath = "chessImage/black_knight.png";
     }
 
     @Override

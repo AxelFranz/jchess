@@ -9,6 +9,10 @@ import java.util.ArrayList;
 public abstract class NonEmpty implements Piece {
 
     private final boolean white;
+
+
+    protected String imgPath;
+
     private Coord pos;
     private int moved;
 
@@ -55,6 +59,10 @@ public abstract class NonEmpty implements Piece {
     @Override
     public void decrementMoved() {
         moved--;
+    }
+
+    public String getImgPath() {
+        return imgPath;
     }
 
     @Override

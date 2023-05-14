@@ -10,6 +10,8 @@ public class Queen extends NonEmpty{
     public Queen(boolean white, Coord pos) {
         super(white, pos);
         availableMoves = new MoveList();
+        if(white) this.imgPath = "chessImage/white_queen.png";
+        else this.imgPath = "chessImage/black_queen";
     }
 
     @Override

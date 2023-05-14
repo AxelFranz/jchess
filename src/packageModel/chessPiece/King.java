@@ -10,6 +10,8 @@ public class King extends NonEmpty {
     public King(boolean white, Coord pos) {
         super(white, pos);
         availableMoves = new MoveList();
+        if(white) this.imgPath = "chessImage/white_king.png";
+        else this.imgPath = "chessImage/black_king.png";
     }
     @Override
     public boolean isKing(){
