@@ -62,7 +62,9 @@ public class Pawn extends NonEmpty {
             tmp = getPos().addY(2*dir);
             if(neverMoved() && Board.inBoard(tmp) && board.isEmptyTile(tmp) ){
                 moveInput[1] = tmp;
-                res.add(Factory.newMove(MoveId.BASIC,moveInput));
+                toTest = Factory.newMove(MoveId.BASIC,moveInput);
+                if(!board.isCheck(isWhite(),toTest))
+                    res.add(toTest);
             }
         }
         return res;
