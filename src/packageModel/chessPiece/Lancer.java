@@ -45,7 +45,7 @@ public class Lancer extends NonEmpty{
     }
     
     private MoveList genAll(Board board){
-        
+        return null;
     }
 
     @Override
