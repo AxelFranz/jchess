@@ -32,7 +32,15 @@ public class Factory {
                 return new Bishop((boolean)array[0],(Coord)array[1]);
             case KNIGHT:
                 return new Knight((boolean)array[0],(Coord)array[1]);
-            default:
+            case MORTAR:
+                return new Mortar((boolean)array[0],(Coord)array[1]);
+            case PRINCESS:
+                return new Princess((boolean)array[0],(Coord)array[1]);
+            case WIDOW:
+                return new Widow((boolean)array[0],(Coord)array[1]);
+            case LANCER:
+                return new Lancer((boolean)array[0],(Coord)array[1]);    
+            default:    
                 return new Empty();
         }
     }
@@ -75,6 +83,14 @@ public class Factory {
                 return PcId.QUEEN;
             case 'K':
                 return PcId.KING;
+            case 'W':
+                return PcId.WIDOW;
+            case 'I':
+                return PcId.PRINCESS;
+            case 'L':
+                return PcId.LANCER;
+            case 'M':
+                return PcId.MORTAR;
             default:
                 return PcId.EMPTY;
         }

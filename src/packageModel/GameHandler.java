@@ -238,7 +238,6 @@ public class GameHandler {
         StringBuilder fenCode = new StringBuilder(128);
         int count = 0;
         Piece tmp;
-        boolean isSet = false;
         for(int y = 0 ; y < 8 ; y ++){
             for(int x = 0 ; x < 8 ; x++){
                 tmp = game.getPiece(x,y);

@@ -20,7 +20,7 @@ public class Princess extends NonEmpty{
 
     @Override
     public char code(){
-        return (isWhite())?('P'):('p');
+        return (isWhite())?('I'):('i');
     }
 
     @Override
