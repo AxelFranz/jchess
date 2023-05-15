@@ -44,8 +44,9 @@ public class CastlingMovement implements Move {
     }
     @Override
     public boolean compareDest(Coord dest){
-        return dest == this.dest;
+        return dest.x() == this.dest.x() && dest.y() == this.dest.y();
     }
+
 
     @Override
     public MoveId moveType(){

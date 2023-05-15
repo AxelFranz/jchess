@@ -18,14 +18,16 @@ public class CaptureMovement implements Move {
     @Override
     public void undoMove(Board board) {
         board.setPiece(start,moving);
+        board.setPiece(dest,Factory.newPiece(PcId.EMPTY,null));
         board.setPiece(dest,captured);
         moving.decrementMoved();
     }
 
     @Override
     public void makeMove(Board board) {
+        board.setPiece(dest, Factory.newPiece(PcId.EMPTY,null));
         board.setPiece(dest,moving);
-        board.setPiece(start,new Empty());
+        board.setPiece(start,Factory.newPiece(PcId.EMPTY,null));
         captured.setPos(null);
         moving.incrementMoved();
     }
@@ -35,8 +37,9 @@ public class CaptureMovement implements Move {
     }
     @Override
     public boolean compareDest(Coord dest){
-        return dest == this.dest;
+        return dest.x() == this.dest.x() && dest.y() == this.dest.y();
     }
+
 
     @Override
     public MoveId moveType(){
