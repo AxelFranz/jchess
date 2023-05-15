@@ -320,6 +320,7 @@ public class GameHandler {
             nb.append(fen.charAt(i));
         }
         fullMoveCount = Integer.parseInt(nb.toString());
+        game.genAllMoves();
     }
 
     /** private int allCastles()
