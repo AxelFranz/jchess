@@ -8,5 +8,9 @@ public enum PcId {
     BISHOP,
     ROOK,
     QUEEN,
+    LANCER,
+    MORTAR,
+    WIDOW,
+
     /* + les 4 pièces féeriques à faire*/
 }

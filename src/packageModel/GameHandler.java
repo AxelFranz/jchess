@@ -35,9 +35,6 @@ public class GameHandler {
      *  6 3 same moves draw: repetition of the same moves for 3 turns
      */
     private int gameState;
-    public int getGameState() {
-        return gameState;
-    }
 
     /** private int HalfMoveClock
      * every time a move other than a pawn moving or a capture occur this variable is incremented
@@ -47,10 +44,30 @@ public class GameHandler {
      *  every time black side play this variable is incremented
      */
     private int fullMoveCount = 1;
-    /** private Coord enPassant = null
+    /** private Coord enPassant
      *  coord where a pawn who can En Passant would end after doing so, if no En Passant are possible null
      */
     private Coord enPassant = null;
+
+    /** private PcId promote
+     * PcId to promote to if a promotion is needed, when no promotion needed : PcId.Empty
+     */
+    private PcId promote = PcId.EMPTY;
+
+    /** public PcId getPromote()
+     * @return the PcId to which a pawn should promote EMPTY if no promotion
+     */
+    public PcId getPromote() {
+        return promote;
+    }
+
+    /** public void setPromote(PcId promote) 
+     * set the promote argument
+     * @param promote the value to which the pawn should promote
+     */
+    public void setPromote(PcId promote) {
+        this.promote = promote;
+    }
 
     /** public void setBoard(Board board)
      * Set the game Board to the value of board
@@ -93,6 +110,9 @@ public class GameHandler {
     public void setGameState(int gameState) {
         this.gameState = gameState;
     }
+    public int getGameState() {
+        return gameState;
+    }
 
     /** public void changeTurn()
      * change the turn form black to white and from white to black
@@ -118,7 +138,12 @@ public class GameHandler {
             return;
         temp.makeMove(game);
         game.addHistory(temp);
-        promotePawn();
+
+        if(promote != PcId.EMPTY){
+            promotePawn(promote);
+            promote = PcId.EMPTY;
+        }
+
         enPassant = null;
         switch(temp.moveType()){
             case CAPTURE:
@@ -183,16 +208,24 @@ public class GameHandler {
         return false;
     }
 
+    public boolean needPromotion(Coord start, Coord dest){
+        if(gameState == -1)
+            return false;
+        Piece selected = game.getPiece(start);
+        if(selected.isEmpty() || (selected.isWhite() != (turn==1)) )
+            return false;
+        Move tmp = selected.getValidMoves().getByDest(dest);
+        if(tmp == null)
+            return false;
+        return (tmp.getPiece().getId() == PcId.PAWN) && (tmp.getDest().y() == ((tmp.getPiece().isWhite()) ? (0) : (7)));
+    }
+
     /** public void promotePawn()
      *  if the last move is a pawnMoving to the opposite side of the board promote it
      */
-    public void promotePawn(){
-        Move tmp =  game.getHistory().last();
-        if((tmp.getPiece().getId() == PcId.PAWN) && (tmp.getDest().y() == ((tmp.getPiece().isWhite())?(0):(7)) ) ){
-            PcId newForm = PcId.QUEEN /* à remplacer fonction de choix par Axel */;
-            game.promotePawn(tmp.getDest(),newForm);
-        }
-
+    public void promotePawn(PcId newForm){
+        Move tmp = game.getHistory().last();
+        game.promotePawn(tmp.getDest(),newForm);
     }
 
     /** public String toFen()
