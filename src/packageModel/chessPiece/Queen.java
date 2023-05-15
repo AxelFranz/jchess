@@ -101,4 +101,8 @@ public class Queen extends NonEmpty{
     public void emptyValidMoves(){
         availableMoves.clear();
     }
+    @Override
+    public PcId getId(){
+        return PcId.QUEEN;
+    }
 }

@@ -64,7 +64,7 @@ public class BasicMovement implements Move {
     }
 
     public Coord canEnPassant(){
-        if(moving.name().equalsIgnoreCase("Pawn")){
+        if(moving.getId() == PcId.PAWN){
             int dir = 1;
             if(moving.isWhite())
                 dir = -1;

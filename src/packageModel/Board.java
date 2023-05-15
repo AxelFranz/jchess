@@ -82,7 +82,7 @@ public class Board {
         return true;
     }
 
-    private ArrayList<Coord> allCaptureTiles(boolean white){
+    public ArrayList<Coord> allCaptureTiles(boolean white){
         ArrayList<Coord> result = new ArrayList<>();
         ArrayList<Coord> dump;
         Piece tmp;

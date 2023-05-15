@@ -38,8 +38,8 @@ public class King extends NonEmpty {
     @Override
     public void setValidMoves(Board board) {
         availableMoves.clear();
-        availableMoves = genAll(board);
-
+        availableMoves = genBasCapt(board);
+        availableMoves.addAll(genCastling(board));
     }
 
     @Override
@@ -47,7 +47,7 @@ public class King extends NonEmpty {
         return "King";
     }
 
-    private MoveList genAll(Board board){
+    private MoveList genBasCapt(Board board){
         MoveList res = new MoveList();
         Object[] builder = new Object[4];
         Coord tmp ;
@@ -75,6 +75,46 @@ public class King extends NonEmpty {
                 }
             }
         }
+
+        return res;
+    }
+
+    private MoveList genCastling(Board board){
+        MoveList res = new MoveList();
+        if(!neverMoved())
+            return res;
+        int y = (isWhite())?(7):(0);
+        int[] sides = {-1,1};
+        Object[] init = new Object[4];
+        Piece tmp;
+        for( int r: sides){
+            int rook = (r==1)?(7):(0);
+            tmp = board.getPiece(rook,y);
+            if((tmp.getId() == PcId.ROOK) && (tmp.isWhite() == isWhite()) && tmp.neverMoved()){
+                ArrayList<Coord> capt = board.allCaptureTiles( !isWhite());
+                ArrayList<Coord> interTiles = new ArrayList<>();
+                int x = getPos().x()+r;
+                while( x != rook){
+                    interTiles.add(new Coord(x,y));
+                    x += r;
+                }
+                boolean empty = true;
+                for(Coord tile: interTiles){
+                    if(!board.getPiece(tile).isEmpty()){
+                        empty = false;
+                    }
+                }
+                if (!capt.contains(interTiles.get(0)) && empty ){
+                    init[0] = this;
+                    init[1] = interTiles.get(1);
+                    init[2] = tmp;
+                    init[3] = interTiles.get(0);
+                    Move castle = Factory.newMove(MoveId.CASTLING,init);
+                    if(!board.isCheck(isWhite(),castle))
+                        res.add(castle);
+                }
+            }
+        }
         return res;
     }
     @Override
@@ -84,6 +124,11 @@ public class King extends NonEmpty {
     @Override
     public void emptyValidMoves(){
         availableMoves.clear();
+    }
+
+    @Override
+    public PcId getId(){
+        return PcId.KING;
     }
 
 }

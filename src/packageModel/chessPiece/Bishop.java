@@ -98,4 +98,8 @@ public class Bishop extends NonEmpty {
     public char code(){
         return (isWhite())?('B'):('b');
     }
+    @Override
+    public PcId getId(){
+        return PcId.BISHOP;
+    }
 }

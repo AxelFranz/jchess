@@ -82,4 +82,8 @@ public class Empty implements Piece {
     @Override
     public void emptyValidMoves(){
     }
+    @Override
+    public PcId getId(){
+        return PcId.EMPTY;
+    }
 }

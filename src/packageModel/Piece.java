@@ -16,6 +16,7 @@ public interface Piece {
     public boolean neverMoved();
     public void setValidMoves(Board board);
     public void emptyValidMoves();
+    public PcId getId();
     public String toString();
     public String name();
     public char code();
