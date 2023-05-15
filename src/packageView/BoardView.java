@@ -152,6 +152,7 @@ public class BoardView extends Application {
                 } else {
                     System.out.println("From "+lastClick+" to "+click);
                     handler.play(lastClick,click);
+                    handler.getGame().printBoard();
                     printGrid();
                 }
                 firstMove = !firstMove;
