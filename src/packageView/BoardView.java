@@ -12,10 +12,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import packageModel.*;
 import packageModel.chessPiece.NonEmpty;
@@ -26,8 +29,6 @@ public class BoardView extends Application {
     private TextField fenNormal;
     @FXML
     private TextField fenMagic;
-    @FXML
-    private AnchorPane parent;
 
     private final int WINDOW_WIDTH = 800;
 
@@ -47,7 +48,7 @@ public class BoardView extends Application {
     private Group grid = new Group();
 
 
-    public static void main(String[] args) throws Exception{
+    public static void mainGUI(String[] args) throws Exception{
         launch(args);
     }
 
@@ -136,6 +137,21 @@ public class BoardView extends Application {
         });
 
     }
+
+    private void endGame(){
+        Rectangle rect = new Rectangle(100,100,600,600);
+        rect.setFill(Color.BLACK);
+        rect.setOpacity(0.8);
+        Text text = new Text("Game ended !");
+        text.setX(350);
+        text.setY(400);
+        text.setFill(Color.WHITE);
+        grid.getChildren().add(rect);
+        grid.getChildren().add(text);
+
+        // No save when the game is over
+        scene.setOnKeyPressed(null);
+    }
     private void loadGame(Node e){
         printGrid();
         stage = (Stage)e.getScene().getWindow();
@@ -152,14 +168,25 @@ public class BoardView extends Application {
                     if(handler.getTurn() !=  current) return;
                     colorPossibleMoves(click);
                 } else {
-                    System.out.println("From "+lastClick+" to "+click);
                     handler.play(lastClick,click);
-                    handler.getGame().printBoard();
                     printGrid();
+                    if(handler.getGameState() > 1) {
+                        endGame();
+                    }
                 }
                 firstMove = !firstMove;
                 lastClick = click;
 
+            }
+        });
+        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent keyEvent) {
+                if(keyEvent.getCode() == KeyCode.W){
+                    System.out.println("FEN code of the game : "+handler.toFen());
+                    System.exit(0);
+
+                }
             }
         });
         stage.setScene(scene);
@@ -189,14 +216,20 @@ public class BoardView extends Application {
     }
 
     public void changeMenuToMagic(ActionEvent e){
+        handler.setGamemode(0);
         System.out.println("Magic");
     }
 
     public void changeMenuToMagicFEN(ActionEvent e){
-        System.out.println("MagicFEN");
+        handler.setGamemode(0);
+        String fen = fenMagic.getText();
+        if(!changeToGame(e,fen)){
+            fenNormal.setText("");
+        }
     }
 
     public void changeMenuToKOTH(ActionEvent e){
-        System.out.println("KOTH");
+        handler.setGamemode(1);
+        changeToGame(e,fenStart);
     }
 }

@@ -47,7 +47,7 @@ public class Pawn extends NonEmpty {
 
     private MoveList genBasic(Board board)
     {
-        Object[] moveInput = new Object[3];
+        Object[] moveInput = new Object[2];
         MoveList res = new MoveList();
         int dir = (isWhite())?(-1):(1);
         Coord tmp = getPos().addY(dir);
@@ -72,7 +72,7 @@ public class Pawn extends NonEmpty {
 
 
     private MoveList genCapture(Board board){
-        Object[] moveInput = new Object[4];
+        Object[] moveInput = new Object[3];
         MoveList res = new MoveList();
         Move toTest;
         int dir = (isWhite())?(-1):(1);

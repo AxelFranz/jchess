@@ -24,12 +24,28 @@ public class Lancer extends NonEmpty{
 
     @Override
     public ArrayList<Coord> allCapturePos(Board board) {
-        return null;
+        ArrayList<Coord> res = new ArrayList<>();
+        int dir = (isWhite())?(-1):(1);
+        for(int i = 1; i < 3 ; i++){
+            Coord forward = new Coord(getPos().x(),i*dir);
+            if (Board.inBoard(forward) && !board.getPiece(forward).isEmpty() )
+                return res;
+        }
+        for(int i = -1 ; i < 2 ; i++){
+            Coord cap = new Coord(getPos().x() + i,getPos().y()+3);
+            if( Board.inBoard(cap))
+                res.add(cap);
+        }
+        return res;
     }
 
     @Override
     public void setValidMoves(Board board) {
-
+        availableMoves.clear();
+    }
+    
+    private MoveList genAll(Board board){
+        
     }
 
     @Override
@@ -44,7 +60,7 @@ public class Lancer extends NonEmpty{
 
     @Override
     public char code() {
-        return 0;
+        return (isWhite())?('L'):('l');
     }
 
 

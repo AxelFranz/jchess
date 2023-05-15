@@ -30,5 +30,6 @@
       <Separator layoutX="193.0" layoutY="411.0" orientation="VERTICAL" prefHeight="136.0" prefWidth="7.0" />
       <Button layoutX="566.0" layoutY="268.0" mnemonicParsing="false" onAction="#changeMenuToKOTH" text="Create new Game" />
       <Text layoutX="48.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 20;" text="Normal Game" wrappingWidth="135.64259453232694" />
+      <Text layoutX="25.0" layoutY="747.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 20;" text="Press &quot;w&quot; at any time to save your game into a FEN code" />
    </children>
 </AnchorPane>

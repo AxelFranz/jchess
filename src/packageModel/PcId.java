@@ -11,6 +11,7 @@ public enum PcId {
     LANCER,
     MORTAR,
     WIDOW,
+    PRINCESS
 
     /* + les 4 pièces féeriques à faire*/
 }

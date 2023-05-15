@@ -36,6 +36,11 @@ public class GameHandler {
      */
     private int gameState;
 
+    public int getGameState() {
+        return gameState;
+    }
+
+
     /** private int HalfMoveClock
      * every time a move other than a pawn moving or a capture occur this variable is incremented
      */
