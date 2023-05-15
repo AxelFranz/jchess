@@ -141,11 +141,22 @@ public class BoardView extends Application {
         stage = (Stage)e.getScene().getWindow();
         scene = new Scene(grid);
         scene.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            private static boolean firstMove = true;
+            private static Coord lastClick;
             @Override
             public void handle(MouseEvent mouseEvent) {
 
                 Coord click = getMouseCoord(mouseEvent);
-                colorPossibleMoves(click);
+                if(firstMove){
+                    colorPossibleMoves(click);
+                } else {
+                    System.out.println("From "+lastClick+" to "+click);
+                    handler.play(lastClick,click);
+                    printGrid();
+                }
+                firstMove = !firstMove;
+                lastClick = click;
+
             }
         });
         stage.setScene(scene);
