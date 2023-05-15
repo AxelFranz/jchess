@@ -89,6 +89,10 @@ public class Bishop extends NonEmpty {
         }
         return res;
     }
+    @Override
+    public void emptyValidMoves(){
+        availableMoves.clear();
+    }
 
     @Override
     public char code(){

@@ -81,5 +81,9 @@ public class King extends NonEmpty {
     public char code(){
         return (isWhite())?('K'):('k');
     }
+    @Override
+    public void emptyValidMoves(){
+        availableMoves.clear();
+    }
 
 }

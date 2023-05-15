@@ -121,7 +121,7 @@ public class BoardView extends Application {
 
     private void colorPossibleMoves(Coord click){
         printGrid();
-        handler.getGame().genAllMoves();
+        handler.getGame().genAllMoves(handler.getTurn()==1);
         MoveList list = handler.getGame().getPiece(click).getValidMoves();
         list.getAllDest().forEach( tile -> {
             Rectangle rect = new Rectangle(

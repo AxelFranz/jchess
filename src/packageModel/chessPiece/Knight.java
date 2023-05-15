@@ -77,4 +77,8 @@ public class Knight extends NonEmpty{
     public char code(){
         return (isWhite())?('N'):('n');
     }
+    @Override
+    public void emptyValidMoves(){
+        availableMoves.clear();
+    }
 }

@@ -78,4 +78,8 @@ public class Empty implements Piece {
     public char code(){
         return ' ';
     }
+
+    @Override
+    public void emptyValidMoves(){
+    }
 }

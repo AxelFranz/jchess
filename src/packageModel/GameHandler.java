@@ -34,10 +34,6 @@ public class GameHandler {
      *  6 3 same moves draw: repetition of the same moves for 3 turns
      */
     private int gameState;
-    /** MoveList selected
-     *  all the possible move that can be done by the last selected piece
-     */
-    private Piece selected;
     /** private int HalfMoveClock
      * every time a move other than a pawn moving or a capture occur this variable is incremented
      */
@@ -60,17 +56,26 @@ public class GameHandler {
     }
 
     /** public void setTurn(int turn)
-     * set ther turn to the turn value
+     * set the turn to the turn value
      * @param turn new value of turn
      */
     public void setTurn(int turn){
         this.turn = turn;
     }
 
+    /** public int getTurn()
+     *  get the turn variable value
+     * @return turn value
+     */
+    public int getTurn(){
+        return turn;
+    }
+
     /** public void setGamemode(int gamemode)
      * set the gamemode before the game is started to play with default or special rules;
      * @param gamemode the new value of gamemode
      */
+
     public void setGamemode(int gamemode) {
         /* only if the game hasn't started yet ( e.g gamestate = -1 ) */
         this.gamemode = gamemode;
@@ -84,14 +89,6 @@ public class GameHandler {
         this.gameState = gameState;
     }
 
-    /** public void setSelected(Coord pos)
-     * set the Selected piece to the coordinates of pos
-     * @param pos Coordinate of the new selected piece
-     */
-    public void setSelected(Coord pos){
-        selected = game.getPiece(pos);
-    }
-
     /** public void changeTurn()
      * change the turn form black to white and from white to black
      */
@@ -99,24 +96,16 @@ public class GameHandler {
         turn = -turn;
     }
 
-    /** public ArrayList<Coord> highlighted()
-     * @return an ArraList<Coord> containing all tiles where the selected piece can move
-     * should be moved in the controller
-     */
-    public ArrayList<Coord> highlighted(){
-        if(selected == null)
-            return null;
-        return selected.getValidMoves().getAllDest();
-    }
 
     /** public void play(Coord dest)
      * make the movement that put the selected piece in the coordinates given in argument
      * and update all variables to fit the new state of the game
      * @param dest the coordinates in which the player ask to move the selected piece
      */
-    public void play(Coord dest){
+    public void play(Coord start,Coord dest){
         if(gameState == -1)
             return;
+        Piece selected = game.getPiece(start);
         if(selected.isEmpty() || (selected.isWhite() != (turn==1)) )
             return;
         Move temp = selected.getValidMoves().getByDest(dest);
@@ -144,7 +133,7 @@ public class GameHandler {
 
         changeTurn();
         selected = null;
-        game.genAllMoves();
+        game.genAllMoves(turn == 1);
         boolean isCheck = game.isCheck(turn == 1);
         boolean hasValidMoves = game.hasLegalMoves(turn == 1);
 
@@ -322,7 +311,7 @@ public class GameHandler {
             nb.append(fen.charAt(i));
         }
         fullMoveCount = Integer.parseInt(nb.toString());
-        game.genAllMoves();
+        game.genAllMoves(turn==1);
     }
 
     /** private int allCastles()

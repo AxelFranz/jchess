@@ -97,4 +97,8 @@ public class Queen extends NonEmpty{
     public char code(){
         return (isWhite())?('Q'):('q');
     }
+    @Override
+    public void emptyValidMoves(){
+        availableMoves.clear();
+    }
 }

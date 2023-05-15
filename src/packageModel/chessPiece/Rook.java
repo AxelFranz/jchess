@@ -91,4 +91,8 @@ public class Rook extends NonEmpty {
     public char code(){
         return (isWhite())?('R'):('r');
     }
+    @Override
+    public void emptyValidMoves(){
+        availableMoves.clear();
+    }
 }

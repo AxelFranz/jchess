@@ -120,6 +120,10 @@ public class Pawn extends NonEmpty {
     public char code(){
         return (isWhite())?('P'):('p');
     }
+    @Override
+    public void emptyValidMoves(){
+        availableMoves.clear();
+    }
 
 
 }

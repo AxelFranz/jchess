@@ -27,10 +27,15 @@ public class Board {
         pc.setPos(pos);
     }
 
-    public void genAllMoves(){
+    public void genAllMoves(Boolean white){
         for(int y = 0 ; y < 8 ; y++){
             for(int x = 0 ; x < 8 ; x++){
-                board[x][y].setValidMoves(this);
+                Piece tmp = board[x][y];
+                if(tmp.isWhite()==white)
+                    tmp.setValidMoves(this);
+                else
+                    tmp.emptyValidMoves();
+
             }
         }
     }
