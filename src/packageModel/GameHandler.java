@@ -35,7 +35,7 @@ public class GameHandler {
      *  6 3 same moves draw: repetition of the same moves for 3 turns
      */
     private int gameState;
-    public int getGameState() {
+public int getGameState() {
         return gameState;
     }
 
