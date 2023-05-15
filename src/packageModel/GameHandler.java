@@ -219,7 +219,7 @@ public class GameHandler {
         Move tmp = selected.getValidMoves().getByDest(dest);
         if(tmp == null)
             return false;
-        return (tmp.getPiece().getId() == PcId.PAWN) && (tmp.getDest().y() == ((tmp.getPiece().isWhite()) ? (0) : (7)));
+        return (tmp.getPiece().getId() == PcId.PAWN || tmp.getPiece().getId() == PcId.LANCER) && (tmp.getDest().y() == ((tmp.getPiece().isWhite()) ? (0) : (7)));
     }
 
     /** public void promotePawn()
