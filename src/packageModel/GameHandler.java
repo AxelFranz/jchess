@@ -145,6 +145,11 @@ public class GameHandler {
             gameState = 1;
         else
             gameState = 0;
+        
+        if( game.getHistory().threefold())
+            gameState = 6;
+        if ( halfMoveClock >= 50)
+            gameState = 5;
 
         if(gamemode != 0){
             if (gamemode == 1) {
