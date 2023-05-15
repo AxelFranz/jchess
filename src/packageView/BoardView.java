@@ -148,6 +148,8 @@ public class BoardView extends Application {
 
                 Coord click = getMouseCoord(mouseEvent);
                 if(firstMove){
+                    int current = (handler.getGame().getPiece(click).isWhite()) ? 1 : -1;
+                    if(handler.getTurn() !=  current) return;
                     colorPossibleMoves(click);
                 } else {
                     System.out.println("From "+lastClick+" to "+click);
