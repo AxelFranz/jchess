@@ -22,6 +22,7 @@ public class GameHandler {
      * 1 for King Of The Hill gamemode
      */
     private int gamemode;
+
     /** int gameState;
      *  the state of the ongoing game
      *  -1 not started: game didn't start yet
@@ -34,6 +35,10 @@ public class GameHandler {
      *  6 3 same moves draw: repetition of the same moves for 3 turns
      */
     private int gameState;
+    public int getGameState() {
+        return gameState;
+    }
+
     /** private int HalfMoveClock
      * every time a move other than a pawn moving or a capture occur this variable is incremented
      */
