@@ -26,7 +26,7 @@ public class Bishop extends NonEmpty {
         ArrayList<Coord> direction = new ArrayList<>();
         for(int i = -1 ; i < 2 ; i += 2){
             for(int j = -1 ; j < 2 ; j += 2){
-                direction.add(getPos().addXY(i,j));
+                direction.add(new Coord(i,j));
             }
         }
         Coord start = getPos(), tmp;
@@ -58,7 +58,7 @@ public class Bishop extends NonEmpty {
         ArrayList<Coord> direction = new ArrayList<>();
         for(int i = -1 ; i < 2 ; i += 2){
             for(int j = -1 ; j < 2 ; j += 2){
-                direction.add(getPos().addXY(i,j));
+                direction.add(new Coord(i,j));
             }
         }
         Object[] builder = new Object[4];

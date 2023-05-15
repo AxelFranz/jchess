@@ -19,8 +19,8 @@ public class CheckTest {
         testBoard.setPiece((Coord)pcBuild[1],king);
         Piece empty = Factory.newPiece(PcId.EMPTY, null);
         pcBuild[1] = new Coord(1,7);
-        Piece queen = Factory.newPiece(PcId.QUEEN,pcBuild);
-        testBoard.setPiece((Coord)pcBuild[1],queen);
+        Piece rook = Factory.newPiece(PcId.ROOK,pcBuild);
+        testBoard.setPiece((Coord)pcBuild[1],rook);
         testBoard.printBoard();
 
         System.out.println(testBoard.getPiece(new Coord(0,0)));
