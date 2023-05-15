@@ -9,8 +9,8 @@ public class Princess extends NonEmpty{
     public Princess(boolean white, Coord pos) {
         super(white, pos);
         availableMoves = new MoveList();
-        if(white) this.imgPath = "";
-        else this.imgPath = "";
+        if(white) this.imgPath = "chessImage/white_princess.png";
+        else this.imgPath = "chessImage/black_princess.png";
     }
 
     @Override

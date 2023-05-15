@@ -14,8 +14,8 @@ public class Widow extends NonEmpty{
         Object[] init = {white,pos};
         queen = Factory.newPiece(PcId.QUEEN,init);
         knight = Factory.newPiece(PcId.QUEEN,init);
-        if(white) this.imgPath = "";
-        else this.imgPath = "";
+        if(white) this.imgPath = "chessImage/white_widow.png";
+        else this.imgPath = "chessImage/black_widow.png";
     }
 
     @Override
