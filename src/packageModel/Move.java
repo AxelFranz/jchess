@@ -8,4 +8,7 @@ public interface Move {
     public MoveId moveType();
     public Coord getDest();
     public Piece getPiece();
+    public Coord getStart();
+    public boolean compare(Move tmp);
+
 }

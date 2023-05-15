@@ -56,4 +56,27 @@ public class EnPassantMovement implements Move {
     public Piece getPiece() {
         return pawn;
     }
+
+
+    @Override
+    public Coord getStart() {
+        return start;
+    }
+
+    public Piece getPawn2() {
+        return pawn2;
+    }
+
+    public Coord getPos() {
+        return pos;
+    }
+
+    @Override
+    public boolean compare(Move cmp){
+        if(moveType() == cmp.moveType()){
+            EnPassantMovement test = (EnPassantMovement) cmp;
+            return (test.getStart().equals(start) && test.getDest().equals(dest) && test.getPiece()==pawn && test.getPos().equals(pos) && test.getPawn2()==pawn2);
+        }
+        return false;
+    }
 }

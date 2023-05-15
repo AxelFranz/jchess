@@ -50,5 +50,20 @@ public class CaptureMovement implements Move {
     public Piece getPiece() {
         return moving;
     }
+    @Override
+    public Coord getStart(){
+        return start;
+    }
+    public Piece getCaptured(){
+        return captured;
+    }
+    @Override
+    public boolean compare(Move cmp){
+        if(moveType() == cmp.moveType()){
+            CaptureMovement test = (CaptureMovement) cmp;
+            return (test.getStart().equals(start) && test.getDest().equals(dest) && (test.getPiece()==moving) && (test.getCaptured()==captured));
+        }
+        return false;
+    }
 
 }

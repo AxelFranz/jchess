@@ -27,9 +27,11 @@ public class GameHandler {
      *  -1 not started: game didn't start yet
      *  0 default: game is ongoing
      *  1 check: game is ongoing with the player in turn being in a check situation
-     *  2 stalemate: game ended with a draw
+     *  2 stalemate: game ended with a draw due to no legalMoves possible
      *  3 checkmate: game ended with the player in turn losing due to a checkmate
      *  4 game mode win: game ended with the player in turn losing due to special game modes rules
+     *  5 50 moves without capture draw: 50 moves were performed without a pawn moving or a piece being captured end in a draw
+     *  6 3 same moves draw: repetition of the same moves for 3 turns
      */
     private int gameState;
     /** MoveList selected

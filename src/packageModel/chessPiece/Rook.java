@@ -54,7 +54,6 @@ public class Rook extends NonEmpty {
                 direction.add(new Coord((i+j)/2,(i-j)/2));
             }
         }
-        System.out.println(direction);
         Object[] builder = new Object[4];
         builder[0] = this;
         Coord start = getPos();

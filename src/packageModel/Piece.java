@@ -17,8 +17,10 @@ public interface Piece {
     public void setValidMoves(Board board);
     public String toString();
     public String name();
-
     public char code();
+    /*
+    public boolean cmpPiece(Piece cmp);
+     */
 
 
 

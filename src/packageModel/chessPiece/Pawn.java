@@ -92,6 +92,8 @@ public class Pawn extends NonEmpty {
     private Move genEnPassant(Board board){
         Move ret = null;
         Move last = board.getLastHistory();
+        if(last == null)
+            return null;
         if (last.moveType() == MoveId.BASIC){
             BasicMovement base = (BasicMovement) last;
             Coord dest = base.canEnPassant();

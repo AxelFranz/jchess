@@ -60,4 +60,29 @@ public class CastlingMovement implements Move {
     public Piece getPiece() {
         return king;
     }
+    @Override
+    public Coord getStart(){
+        return start;
+    }
+
+    public Piece getRook(){
+        return rook;
+    }
+
+    public Coord getrStart(){
+        return rStart;
+    }
+
+    public Coord getrDest(){
+        return rDest;
+    }
+
+    @Override
+    public boolean compare(Move cmp){
+        if(moveType() == cmp.moveType()){
+            CastlingMovement test = (CastlingMovement) cmp;
+            return (test.getStart().equals(start) && test.getDest().equals(dest) && (test.getPiece()==king) && (test.getRook()==rook) && test.getrStart().equals(rStart) && test.getrDest().equals(rDest));
+        }
+        return false;
+    }
 }
