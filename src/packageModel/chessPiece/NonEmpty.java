@@ -55,6 +55,14 @@ public abstract class NonEmpty implements Piece {
     public void incrementMoved() {
         moved++;
     }
+    @Override
+    public void setMoved(int moved){
+        this.moved = moved;
+    }
+    @Override
+    public int getMoved(){
+        return moved;
+    }
 
     @Override
     public void decrementMoved() {

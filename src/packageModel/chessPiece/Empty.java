@@ -56,6 +56,10 @@ public class Empty implements Piece {
     @Override
     public void setPos(Coord pos) {
     }
+    @Override
+    public void setMoved(int moved){
+        return;
+    }
 
     @Override
     public void incrementMoved() {
@@ -63,6 +67,9 @@ public class Empty implements Piece {
 
     @Override
     public void decrementMoved() {
+    }
+    public int getMoved(){
+        return 0;
     }
 
     public String toString(){

@@ -118,7 +118,7 @@ public class GameHandler {
             return;
         temp.makeMove(game);
         game.addHistory(temp);
-
+        promotePawn();
         enPassant = null;
         switch(temp.moveType()){
             case CAPTURE:
@@ -181,6 +181,18 @@ public class GameHandler {
                 return true;
         }
         return false;
+    }
+
+    /** public void promotePawn()
+     *  if the last move is a pawnMoving to the opposite side of the board promote it
+     */
+    public void promotePawn(){
+        Move tmp =  game.getHistory().last();
+        if((tmp.getPiece().getId() == PcId.PAWN) && (tmp.getDest().y() == ((tmp.getPiece().isWhite())?(0):(7)) ) ){
+            PcId newForm = PcId.QUEEN /* à remplacer fonction de choix par Axel */;
+            game.promotePawn(tmp.getDest(),newForm);
+        }
+
     }
 
     /** public String toFen()
@@ -290,9 +302,9 @@ public class GameHandler {
         if (buf == 'q') {
             buf = fen.charAt(index++);
         } else {
-            tmp = game.getPiece(7,0).code();
+            tmp = game.getPiece(0,0).code();
             if( tmp == 'r')
-                game.getPiece(7,0).incrementMoved();
+                game.getPiece(0,0).incrementMoved();
         }
         if(buf == '-')
             index ++;

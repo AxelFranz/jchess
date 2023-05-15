@@ -6,6 +6,7 @@ import packageModel.moveImplementations.CaptureMovement;
 import packageModel.moveImplementations.CastlingMovement;
 import packageModel.moveImplementations.EnPassantMovement;
 
+import javax.xml.stream.FactoryConfigurationError;
 import java.util.Objects;
 
 
@@ -119,5 +120,19 @@ public class Factory {
         return index;
     }
 
+    public static Piece metamorph(Piece pc,PcId type){
+        Object[] init = new Object[2];
+        if(pc.isEmpty()){
+            return Factory.newPiece(PcId.EMPTY,null);
+        } else {
+            init[0] = pc.isWhite();
+            init[1] = pc.getPos();
+            int moved = pc.getMoved();
+            Piece newP = Factory.newPiece(type,init);
+            newP.setMoved(moved);
+            return newP;
+        }
+
+    }
 
 }
