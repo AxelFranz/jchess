@@ -14,6 +14,8 @@ public interface Piece {
     public void incrementMoved();
     public void decrementMoved();
     public boolean neverMoved();
+    public int getMoved();
+    public void setMoved(int moved);
     public void setValidMoves(Board board);
     public void emptyValidMoves();
     public PcId getId();

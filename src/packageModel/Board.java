@@ -1,5 +1,10 @@
 package packageModel;
 
+import packageModel.chessPiece.Bishop;
+import packageModel.chessPiece.Knight;
+import packageModel.chessPiece.Queen;
+import packageModel.chessPiece.Rook;
+
 import java.util.ArrayList;
 
 
@@ -148,6 +153,12 @@ public class Board {
         if(history.size() > 0)
             return history.get(history.size()-1);
         return null;
+    }
+
+    public void promotePawn(Coord pos, PcId prom){
+        if( Board.inBoard(pos) && getPiece(pos).getId() == PcId.PAWN)
+            if( prom == PcId.BISHOP || prom == PcId.ROOK || prom == PcId.QUEEN || prom == PcId.KNIGHT )
+                setPiece(pos,Factory.metamorph(getPiece(pos),prom));
     }
 
 

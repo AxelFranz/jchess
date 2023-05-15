@@ -24,4 +24,7 @@ public class MoveHistory extends ArrayList<Move> {
         }
         return false;
     }
+    public Move last(){
+        return this.get(size()-1);
+    }
 }
