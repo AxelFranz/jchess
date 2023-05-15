@@ -72,14 +72,14 @@ public class Board {
                 tmp = getPiece(i,j);
                 if( !tmp.isEmpty() && tmp.isWhite() == white ){
                     if(!tmp.getValidMoves().isEmpty()){
+                        System.out.println("bip");
                         return true;
                     }
                 }
 
             }
         }
-
-        return true;
+        return false;
     }
 
     public ArrayList<Coord> allCaptureTiles(boolean white){

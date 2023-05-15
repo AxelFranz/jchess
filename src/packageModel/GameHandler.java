@@ -139,7 +139,6 @@ public class GameHandler {
             fullMoveCount++;
 
         changeTurn();
-        selected = null;
         game.genAllMoves(turn == 1);
         boolean isCheck = game.isCheck(turn == 1);
         boolean hasValidMoves = game.hasLegalMoves(turn == 1);
@@ -150,21 +149,22 @@ public class GameHandler {
             gameState = 2;
         else if( isCheck )
             gameState = 1;
-        else
-            gameState = 0;
-
-        if( game.getHistory().threefold())
-            gameState = 6;
-        if ( halfMoveClock >= 50)
-            gameState = 5;
-
-        if(gamemode != 0){
-            if (gamemode == 1) {
-                if (kothCondition())
-                    gameState = 4;
+        else{
+            if( game.getHistory().threefold())
+                gameState = 6;
+            else if (halfMoveClock >= 50)
+                gameState = 5;
+            else if(gamemode != 0){
+                if (gamemode == 1) {
+                    if (kothCondition())
+                        gameState = 4;
+                }
             }
         }
+        System.out.println(gameState);
+
     }
+
 
     /** private boolean kothCondition()
      * check if the special winning conditions for the King of The Hill are verified
