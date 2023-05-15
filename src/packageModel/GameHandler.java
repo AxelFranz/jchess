@@ -115,8 +115,7 @@ public class GameHandler {
     public void setGameState(int gameState) {
         this.gameState = gameState;
     }
-
-
+    
     /** public void changeTurn()
      * change the turn form black to white and from white to black
      */

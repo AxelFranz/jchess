@@ -32,7 +32,7 @@ public class Lancer extends NonEmpty{
                 return res;
         }
         for(int i = -1 ; i < 2 ; i++){
-            Coord cap = new Coord(getPos().x() + i,getPos().y()+3);
+            Coord cap = new Coord(getPos().x() + i,getPos().y()+((i==0)?(3):(2)));
             if( Board.inBoard(cap))
                 res.add(cap);
         }
@@ -45,6 +45,11 @@ public class Lancer extends NonEmpty{
     }
     
     private MoveList genAll(Board board){
+        Object[] init = new Object[3];
+        MoveList res = new MoveList();
+        int dir = (isWhite())?(-1):(1);
+        
+        /* basic move part */
         return null;
     }
 
@@ -61,6 +66,10 @@ public class Lancer extends NonEmpty{
     @Override
     public char code() {
         return (isWhite())?('L'):('l');
+    }
+    @Override
+    public String name() {
+        return "Lancer";
     }
 
 
