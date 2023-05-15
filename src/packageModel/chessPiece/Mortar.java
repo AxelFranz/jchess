@@ -12,8 +12,8 @@ public class Mortar extends NonEmpty{
     public Mortar(boolean white, Coord pos) {
         super(white, pos);
         availableMoves = new MoveList();
-        if(white) this.imgPath = "";
-        else this.imgPath = "";
+        if(white) this.imgPath = "chessPiece/white_mortar.png";
+        else this.imgPath = "chessPiece/black_mortar.png";
     }
     
     @Override

@@ -10,8 +10,8 @@ public class Lancer extends NonEmpty{
     public Lancer(boolean white, Coord pos) {
         super(white, pos);
         availableMoves = new MoveList();
-        if(white) this.imgPath = null/* to set  */;
-        else this.imgPath = null/* to set */;
+        if(white) this.imgPath = "chessPiece/white_lancer.png";
+        else this.imgPath = "chessPiece/black_lancer.png";
 
     }
     @Override

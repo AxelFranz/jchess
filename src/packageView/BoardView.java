@@ -23,29 +23,39 @@ import javafx.stage.Stage;
 import packageModel.*;
 import packageModel.chessPiece.NonEmpty;
 
+import java.io.IOException;
+
 public class BoardView extends Application {
 
     @FXML
     private TextField fenNormal;
     @FXML
     private TextField fenMagic;
+    @FXML
+    private TextField newPcid;
 
     private final int WINDOW_WIDTH = 800;
 
     private final String fenStart = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
+    private final String fenStartMagic = "rniwkinr/pppppppp/8/8/8/8/PPPPPPPP/RNIWKINR w KQkq - 0 1";
 
     private final int WINDOW_HEIGHT = 800;
 
     private final int ROW_WIDTH = WINDOW_WIDTH/8;
     private final int ROW_HEIGHT = WINDOW_HEIGHT/8;
+    private boolean isChanged = false;
 
     private Stage stage;
+    private Coord dep;
+    private Coord arr;
 
     private Scene scene;
+    private static PcId pcid = PcId.EMPTY ;
 
-    private GameHandler handler = new GameHandler();
+    private static GameHandler handler = new GameHandler();
 
     private Group grid = new Group();
+    private Parent chom;
 
 
     public static void mainGUI(String[] args) throws Exception{
@@ -86,17 +96,19 @@ public class BoardView extends Application {
 
     private void printGrid(){
         emptyGrid(grid);
+        handler.getGame().printBoard();
 
         for(int i = 0; i < 8; i++){
             for (int j = 0; j < 8; j++) {
                 Piece aff = handler.getGame().getPiece(i,j);
                 if(aff.isEmpty()) continue;
                 NonEmpty piece = (NonEmpty) aff;
+                try{
                 Image img = new Image(piece.getImgPath(), 100, 100, false, false);
                 ImageView imgView = new ImageView(img);
                 imgView.setX(i * ROW_WIDTH);
                 imgView.setY(j * ROW_HEIGHT);
-                    grid.getChildren().add(imgView);
+                    grid.getChildren().add(imgView);} catch (Exception e){};
             }
         }
     }
@@ -124,7 +136,7 @@ public class BoardView extends Application {
         printGrid();
         handler.getGame().genAllMoves(handler.getTurn()==1);
         MoveList list = handler.getGame().getPiece(click).getValidMoves();
-        list.getAllDest().forEach( tile -> {
+        try {list.getAllDest().forEach( tile -> {
             Rectangle rect = new Rectangle(
                     tile.x() * ROW_WIDTH,
                     tile.y() * ROW_HEIGHT,
@@ -134,7 +146,7 @@ public class BoardView extends Application {
             rect.setFill(Color.ORANGE);
             rect.setOpacity(0.3);
             grid.getChildren().add(rect);
-        });
+        });} catch (Exception e){return;} // Errors come from empty list so we ignore them
 
     }
 
@@ -152,6 +164,17 @@ public class BoardView extends Application {
         // No save when the game is over
         scene.setOnKeyPressed(null);
     }
+
+    private void makeMove(){
+        handler.setPromote(pcid);
+        handler.play(dep,arr);
+        pcid = PcId.EMPTY;
+        printGrid();
+        if(handler.getGameState() > 1) {
+            endGame();
+        }
+    }
+
     private void loadGame(Node e){
         printGrid();
         stage = (Stage)e.getScene().getWindow();
@@ -163,16 +186,30 @@ public class BoardView extends Application {
             public void handle(MouseEvent mouseEvent) {
 
                 Coord click = getMouseCoord(mouseEvent);
+                firstif:
                 if(firstMove){
                     int current = (handler.getGame().getPiece(click).isWhite()) ? 1 : -1;
                     if(handler.getTurn() !=  current) return;
                     colorPossibleMoves(click);
                 } else {
-                    handler.play(lastClick,click);
-                    printGrid();
-                    if(handler.getGameState() > 1) {
-                        endGame();
-                    }
+                    boolean need = handler.needPromotion(lastClick,click);
+                    System.out.println(need);
+                    /*if(need){
+                        try {
+                            chom = FXMLLoader.load(getClass().getResource("ChangePiece.fxml"));
+                        } catch (IOException ex) {
+                            throw new RuntimeException(ex);
+                        }
+                        scene.setRoot(chom);
+                        stage.show();
+                        dep = lastClick;
+                        arr = click;
+                        break firstif;
+                    }*/
+                    dep = lastClick;
+                    arr = click;
+                    makeMove();
+
                 }
                 firstMove = !firstMove;
                 lastClick = click;
@@ -185,7 +222,6 @@ public class BoardView extends Application {
                 if(keyEvent.getCode() == KeyCode.W){
                     System.out.println("FEN code of the game : "+handler.toFen());
                     System.exit(0);
-
                 }
             }
         });
@@ -200,6 +236,14 @@ public class BoardView extends Application {
         handler.loadFen(fen);
         loadGame((Node)e.getSource());
         return true;
+    }
+
+
+    public void checkNew(ActionEvent e){
+        handler = new GameHandler();
+        pcid =  PcId.values()[Integer.parseInt(newPcid.getText())];
+        loadGame((Node)e.getSource());
+        makeMove();
     }
 
     public void changeMenuToNormal(ActionEvent e){
@@ -217,7 +261,7 @@ public class BoardView extends Application {
 
     public void changeMenuToMagic(ActionEvent e){
         handler.setGamemode(0);
-        System.out.println("Magic");
+        changeToGame(e,fenStartMagic);
     }
 
     public void changeMenuToMagicFEN(ActionEvent e){
