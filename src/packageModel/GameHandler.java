@@ -109,6 +109,8 @@ public class GameHandler {
         if(selected.isEmpty() || (selected.isWhite() != (turn==1)) )
             return;
         Move temp = selected.getValidMoves().getByDest(dest);
+        if(temp == null)
+            return;
         temp.makeMove(game);
         game.addHistory(temp);
 
@@ -145,7 +147,7 @@ public class GameHandler {
             gameState = 1;
         else
             gameState = 0;
-        
+
         if( game.getHistory().threefold())
             gameState = 6;
         if ( halfMoveClock >= 50)
