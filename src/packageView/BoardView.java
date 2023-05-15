@@ -37,7 +37,7 @@ public class BoardView extends Application {
     private final int WINDOW_WIDTH = 800;
 
     private final String fenStart = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
-    private final String fenStartMagic = "rniwkinr/pppppppp/8/8/8/8/PPPPPPPP/RNIWKINR w KQkq - 0 1";
+    private final String fenStartMagic = "rniwkinr/llllllll/8/8/8/8/LLLLLLLL/RNIWKINR w KQkq - 0 1";
 
     private final int WINDOW_HEIGHT = 800;
 
