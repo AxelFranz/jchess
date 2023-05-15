@@ -161,7 +161,6 @@ public class GameHandler {
                 }
             }
         }
-        System.out.println(gameState);
 
     }
 
