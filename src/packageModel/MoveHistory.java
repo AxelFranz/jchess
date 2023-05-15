@@ -16,4 +16,12 @@ public class MoveHistory extends ArrayList<Move> {
     public MoveHistory clone() {
         return (MoveHistory) this.clone();
     }
+
+    public boolean threefold(){
+        if(size() >= 6){
+            Move[] test= {get(size()-1),get(size()-2),get(size()-5), get(size()-6)};
+            return test[0].compare(test[2]) && test[1].compare(test[3]);
+        }
+        return false;
+    }
 }
